@@ -8,7 +8,7 @@ void main() async {
   runApp(
     DevicePreview(
       enabled: true,
-      builder: (context) => MyApp(), // Wrap your app
+      builder: (context) => MyApp(),
     ),
   );
 }
@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: Obx(() => MyHomePage()));
+        home: MyHomePage());
   }
 }
 
@@ -33,6 +33,13 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('AI Stories'),
+      ),
+      body: Center(
+        child: Text('AI Stories'),
+      ),
+    );
   }
 }

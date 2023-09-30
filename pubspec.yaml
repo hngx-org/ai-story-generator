@@ -27,6 +27,13 @@ environment:
 # dependencies can be manually updated by changing the version numbers below to
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
+
+flutter_native_splash:
+  color: "#ffffff"
+  image: assets/images/app_logo_big.png
+  android: true
+  ios: true
+
 dependencies:
   flutter:
     sdk: flutter
@@ -42,6 +49,7 @@ dependencies:
   http: ^1.1.0
   intl: ^0.18.1
   flutter_credit_card: ^3.0.7
+  flutter_native_splash: ^2.3.2
 
 dev_dependencies:
   flutter_test:
