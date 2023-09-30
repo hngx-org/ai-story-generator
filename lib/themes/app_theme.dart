@@ -13,4 +13,5 @@ class AppTheme {
   static const Color iconRedColor = Color(0xFFF67280);
   static const Color plansContainerColor = Color(0xFFF3E6FE);
   static const Color redColor = Color(0xFFC23535);
+  static const Color welcomeBgColor = Color(0xFFFCF8FF);
 }
