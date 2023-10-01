@@ -17,6 +17,7 @@ class AppTheme {
   static const Color storyColor = Color(0xFFfcf8ff);
   static const Color iconColor = Color(0xFFf67280);
   static const Color shareColor = Color(0xFFB345F9);
+    static const Color selectColor = Color(0xFFF9EEF8);
 
   static const Color welcomeBgColor = Color(0xFFFCF8FF);
 
