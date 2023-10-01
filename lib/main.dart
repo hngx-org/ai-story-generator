@@ -1,5 +1,9 @@
+
+import 'package:ai_story_generator/screens/ai_stories/dashboard.dart';
+
 import 'package:ai_story_generator/screens/auth/sign_in.dart';
 import 'package:ai_story_generator/themes/app_theme.dart';
+
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -11,7 +15,7 @@ void main() async {
   await GetStorage.init();
   runApp(
     DevicePreview(
-      enabled: true,
+      enabled: false,
       builder: (context) => MyApp(),
     ),
   );
@@ -23,15 +27,15 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-          return GetMaterialApp(
-            debugShowCheckedModeBanner: false,
-            theme: ThemeData(
-              // fontFamily: GoogleFonts.abhayaLibre,
-              colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-              useMaterial3: true,
-            ),
-            home: SignInScreen(),
-          );
+
+    return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          useMaterial3: true,
+        ),
+        home: const DashBoardScreen());
+
   }
 }
 

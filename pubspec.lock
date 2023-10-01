@@ -163,6 +163,16 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.3.2"
+
+  flutter_staggered_grid_view:
+    dependency: "direct main"
+    description:
+      name: flutter_staggered_grid_view
+      sha256: "19e7abb550c96fbfeb546b23f3ff356ee7c59a019a651f8f102a4ba9b7349395"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.7.0"
+
   flutter_screenutil:
     dependency: "direct main"
     description:
@@ -171,6 +181,7 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "5.9.0"
+
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -237,6 +248,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.0.2"
+  iconamoon:
+    dependency: "direct main"
+    description:
+      name: iconamoon
+      sha256: f3de914381adbde53623d5270beb9a816643674e2d7a458ddc29d6c98495b834
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.3"
   image:
     dependency: transitive
     description:
@@ -405,6 +424,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.0.5"
+  scrollable_positioned_list:
+    dependency: "direct main"
+    description:
+      name: scrollable_positioned_list
+      sha256: "1b54d5f1329a1e263269abc9e2543d90806131aa14fe7c6062a8054d57249287"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.3.8"
   shared_preferences:
     dependency: transitive
     description:
