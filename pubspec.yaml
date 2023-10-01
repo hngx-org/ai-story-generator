@@ -30,7 +30,7 @@ environment:
 
 flutter_native_splash:
   color: "#ffffff"
-  image: assets/images/app_logo_big.png
+  image: assets/images/app_logo_Xbig.png
   android: true
   ios: true
 
@@ -46,6 +46,7 @@ dependencies:
   device_preview: ^1.1.0
   google_fonts: ^6.1.0
   get_storage: ^2.1.1
+  flutter_screenutil: ^5.9.0
   http: ^1.1.0
   intl: ^0.18.1
   flutter_credit_card: ^3.0.7
