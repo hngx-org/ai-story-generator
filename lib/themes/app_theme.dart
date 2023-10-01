@@ -13,7 +13,11 @@ class AppTheme {
   static const Color iconRedColor = Color(0xFFF67280);
   static const Color plansContainerColor = Color(0xFFF3E6FE);
   static const Color redColor = Color(0xFFC23535);
+
   static const Color storyColor = Color(0xFFfcf8ff);
   static const Color iconColor = Color(0xFFf67280);
   static const Color shareColor = Color(0xFFB345F9);
+
+  static const Color welcomeBgColor = Color(0xFFFCF8FF);
+
 }
