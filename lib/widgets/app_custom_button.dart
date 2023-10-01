@@ -1,5 +1,4 @@
 import 'package:ai_story_generator/core/app_export.dart';
-import 'package:ai_story_generator/main.dart';
 import 'package:flutter/material.dart';
 
 class AppButton extends StatelessWidget {

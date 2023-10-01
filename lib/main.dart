@@ -2,10 +2,8 @@ import 'package:ai_story_generator/screens/auth/sign_in.dart';
 import 'package:ai_story_generator/themes/app_theme.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 
 AppTheme appTheme = AppTheme();
