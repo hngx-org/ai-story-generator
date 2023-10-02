@@ -35,7 +35,13 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: localStorage.read("isLoggedIn") == true? const DashBoardScreen(): const WelcomeScreen(),
+      home:
+      
+      //  localStorage.read("isLoggedIn") == true? 
+       
+       const DashBoardScreen()
+       
+      //  : const WelcomeScreen(),
     );
   }
 }

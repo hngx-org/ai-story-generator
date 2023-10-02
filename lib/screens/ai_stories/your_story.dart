@@ -1,11 +1,12 @@
+import 'package:ai_story_generator/screens/ai_stories/creative_witing_list.dart';
+import 'package:ai_story_generator/screens/ai_stories/poem_list.dart';
 import 'package:ai_story_generator/screens/ai_stories/story_list.dart';
-import 'package:ai_story_generator/screens/ai_stories/with_all_category.dart';
 import 'package:flutter/material.dart';
 
 import '../../core/app_export.dart';
 
 class YourStoryScreen extends StatefulWidget {
-  YourStoryScreen({super.key});
+  const YourStoryScreen({super.key});
 
   @override
   State<YourStoryScreen> createState() => _YourStoryScreenState();
@@ -13,6 +14,15 @@ class YourStoryScreen extends StatefulWidget {
 
 class _YourStoryScreenState extends State<YourStoryScreen> {
   int selectedIndex = 0;
+
+  List<String> title = ['Your Stories', 'Your Creative Writings', 'Your Poems'];
+
+  List<Widget> homePages = const [
+    StoryList(),
+    CreativeWritingList(),
+    PoemList(),
+  ];
+
   @override
   Widget build(BuildContext context) {
     SizeConfig.init(context);
@@ -21,7 +31,7 @@ class _YourStoryScreenState extends State<YourStoryScreen> {
           automaticallyImplyLeading: false,
           centerTitle: false,
           title: customNormalText(
-              inputText: 'Your Stories',
+              inputText: title[selectedIndex],
               fontSize: 32,
               weight: FontWeight.w800,
               colorName: AppTheme.blackColor),
@@ -45,7 +55,6 @@ class _YourStoryScreenState extends State<YourStoryScreen> {
                             setState(() {
                               selectedIndex = index;
                             });
-                            Get.to(WithAllCategoryScreen());
                           },
                           child: AnimatedContainer(
                             duration: Duration(microseconds: 300),
@@ -83,7 +92,7 @@ class _YourStoryScreenState extends State<YourStoryScreen> {
               SizedBox(
                 height: getProportionateScreenHeight(100),
               ),
-              StoryList()
+              homePages[selectedIndex]
             ],
           ),
         ));
