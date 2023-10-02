@@ -39,7 +39,7 @@ class _PlansScreenState extends State<PlansScreen> {
         ),
         actions: [
           IconButton(
-            icon: const Icon(Icons.cancel),
+            icon: const Icon(Icons.close),
             onPressed: () {
               Get.off(const DashBoardScreen());
             },
@@ -47,12 +47,12 @@ class _PlansScreenState extends State<PlansScreen> {
         ],
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(24.0),
         child: SingleChildScrollView(
           child: Column(
             children: [
               SizedBox(
-                height: 220.0,
+                height: getProportionateScreenHeight(220),
                 width: double.infinity,
                 child: Image.asset(
                   ImageConstant.planCategoryImage,
@@ -131,7 +131,7 @@ class _PlansScreenState extends State<PlansScreen> {
                 ),
                 textAlign: TextAlign.center,
               ),
-              const SizedBox(height: 30.0),
+               SizedBox(height: getProportionateScreenHeight(30)),
               SizedBox(
                 width: getProportionateScreenWidth(342),
                 height: getProportionateScreenHeight(60),

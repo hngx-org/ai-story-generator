@@ -17,7 +17,7 @@ class UserProfileScreen extends StatelessWidget {
           width: wt,
           decoration: BoxDecoration(
               image: DecorationImage(
-                  fit: BoxFit.fill,
+                  fit: BoxFit.cover,
                   image: AssetImage(ImageConstant.profileImage))),
         ),
         Positioned(

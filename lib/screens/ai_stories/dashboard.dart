@@ -15,7 +15,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
   int currentPage = 0;
   List<Widget> pages = const [
     YourStoryScreen(),
-     WithAllCategoryScreen(),
+    WithAllCategoryScreen(),
     UserProfileScreen(),
   ];
 
@@ -93,32 +93,39 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
     return Container(
       padding: EdgeInsets.symmetric(
           horizontal: getProportionateScreenWidth(24),
-          vertical: getProportionateScreenHeight(5)),
+          vertical: getProportionateScreenHeight(2)),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          InkWell(
-            splashColor: AppTheme.primaryColor,
-            onTap: () {
-              setState(() {
-                currentPage = 0;
-              });
-            },
-            child: Column(
-              children: [
-                Image(image: AssetImage(ImageConstant.books)),
-                customCentreText(
-                    inputText: 'Your Stories',
-                    fontSize: 16,
-                    weight: FontWeight.w500,
-                    colorName: AppTheme.blackColor),
-                Container(
-                  height: getProportionateScreenHeight(2),
-                  width: getProportionateScreenWidth(32),
-                  color:
-                      index == 0 ? AppTheme.primaryColor : AppTheme.whiteColor,
-                )
-              ],
+          SizedBox(
+            width: getProportionateScreenWidth(85),
+            height: getProportionateScreenHeight(80),
+            child: GestureDetector(
+              onTap: () {
+                setState(() {
+                  currentPage = 0;
+                });
+              },
+              child: Column(
+                children: [
+                  SizedBox(
+                      height: getProportionateScreenHeight(49),
+                      width: getProportionateScreenWidth(73),
+                      child: Image(image: AssetImage(ImageConstant.books))),
+                  customCentreText(
+                      inputText: 'Your Stories',
+                      fontSize: 16,
+                      weight: FontWeight.w500,
+                      colorName: AppTheme.blackColor),
+                  Container(
+                    height: getProportionateScreenHeight(2),
+                    width: getProportionateScreenWidth(32),
+                    color: index == 0
+                        ? AppTheme.primaryColor
+                        : AppTheme.whiteColor,
+                  )
+                ],
+              ),
             ),
           ),
           Stack(
@@ -152,27 +159,36 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
               )
             ],
           ),
-          InkWell(
-            onTap: () {
-              setState(() {
-                currentPage = 2;
-              });
-            },
-            child: Column(
-              children: [
-                Image(image: AssetImage(ImageConstant.profileAvatar)),
-                customCentreText(
-                    inputText: 'Profile',
-                    fontSize: 16,
-                    weight: FontWeight.w500,
-                    colorName: AppTheme.blackColor),
-                Container(
-                  height: getProportionateScreenHeight(2),
-                  width: getProportionateScreenWidth(32),
-                  color:
-                      index == 2 ? AppTheme.primaryColor : AppTheme.whiteColor,
-                )
-              ],
+          SizedBox(
+            width: getProportionateScreenWidth(85),
+            height: getProportionateScreenHeight(80),
+            child: InkWell(
+              onTap: () {
+                setState(() {
+                  currentPage = 2;
+                });
+              },
+              child: Column(
+                children: [
+                  SizedBox(
+                      height: getProportionateScreenHeight(49),
+                      width: getProportionateScreenWidth(73),
+                      child: Image(
+                          image: AssetImage(ImageConstant.profileAvatar))),
+                  customCentreText(
+                      inputText: 'Profile',
+                      fontSize: 16,
+                      weight: FontWeight.w500,
+                      colorName: AppTheme.blackColor),
+                  Container(
+                    height: getProportionateScreenHeight(2),
+                    width: getProportionateScreenWidth(32),
+                    color: index == 2
+                        ? AppTheme.primaryColor
+                        : AppTheme.whiteColor,
+                  )
+                ],
+              ),
             ),
           ),
         ],
