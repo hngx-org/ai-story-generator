@@ -27,6 +27,18 @@ environment:
 # dependencies can be manually updated by changing the version numbers below to
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
+
+flutter_native_splash:
+  color: "#ffffff"
+  image: assets/images/app_logo_Xbig.png
+  android: true
+  ios: true
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/app_logo_Xbig.png"
+
 dependencies:
   flutter:
     sdk: flutter
@@ -39,9 +51,18 @@ dependencies:
   device_preview: ^1.1.0
   google_fonts: ^6.1.0
   get_storage: ^2.1.1
+  flutter_screenutil: ^5.9.0
   http: ^1.1.0
   intl: ^0.18.1
   flutter_credit_card: ^3.0.7
+  flutter_native_splash: ^2.3.2
+  iconamoon: ^0.0.3
+  scrollable_positioned_list: ^0.3.8
+  flutter_staggered_grid_view: ^0.7.0
+  flutter_launcher_icons: ^0.13.1
+  hng_authentication: ^0.0.3
+  flutter_svg: ^2.0.7
+ 
 
 dev_dependencies:
   flutter_test:
