@@ -1,6 +1,6 @@
 import 'package:ai_story_generator/core/app_export.dart';
-import 'package:ai_story_generator/screens/ai_stories/with_all_category.dart';
 import 'package:ai_story_generator/screens/ai_stories/your_story.dart';
+import 'package:ai_story_generator/screens/history/history_with_all_category.dart';
 import 'package:ai_story_generator/screens/profile.dart';
 import 'package:flutter/material.dart';
 
@@ -13,9 +13,9 @@ class DashBoardScreen extends StatefulWidget {
 
 class _DashBoardScreenState extends State<DashBoardScreen> {
   int currentPage = 0;
-  List<Widget> pages = [
+  List<Widget> pages = const [
     YourStoryScreen(),
-    const WithAllCategoryScreen(),
+     WithAllCategoryScreen(),
     UserProfileScreen(),
   ];
 

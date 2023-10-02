@@ -14,7 +14,7 @@ class WelcomeScreen extends StatelessWidget {
         backgroundColor: AppTheme.whiteColor,
         body: Column(
           children: <Widget>[
-            const SizedBox(height: 62.0),
+            SizedBox(height: getProportionateScreenHeight(62)),
             SizedBox(
               height: MediaQuery.of(context).size.height / 3,
               width: double.infinity,
@@ -33,23 +33,18 @@ class WelcomeScreen extends StatelessWidget {
                   ),
                   color: AppTheme.welcomeBgColor,
                 ),
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 30.0,
-                  vertical: 30.0,
+                padding: EdgeInsets.symmetric(
+                  horizontal: getProportionateScreenWidth(30),
+                  vertical: getProportionateScreenHeight(30),
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Text(
-                      "Welcome to",
-                      style: GoogleFonts.abrilFatface(
-                        textStyle: const TextStyle(
-                          fontSize: 30.0,
-                          fontWeight: FontWeight.bold,
-                          color: AppTheme.welcomeTextColor,
-                        ),
-                      ),
-                    ),
+                    customCentreText(
+                        inputText: 'Welcome to',
+                        fontSize: 30,
+                        weight: FontWeight.bold,
+                        colorName: AppTheme.welcomeTextColor),
                     Text(
                       "Ai Story Generator",
                       style: GoogleFonts.abrilFatface(
@@ -60,7 +55,7 @@ class WelcomeScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                    const SizedBox(height: 20.0),
+                    SizedBox(height: getProportionateScreenHeight(20)),
                     Text(
                       "Let’s Create Stories together using the\npower of  artificial intelligence",
                       style: GoogleFonts.abhayaLibre(
