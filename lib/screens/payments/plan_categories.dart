@@ -24,7 +24,7 @@ class _PlansScreenState extends State<PlansScreen> {
         ),
         actions: [
           IconButton(
-            icon: const Icon(Icons.cancel_sharp),
+            icon: const Icon(Icons.close),
             onPressed: () {
               // Navigate to the profile screen
             },
