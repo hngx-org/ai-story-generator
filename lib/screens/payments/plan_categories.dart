@@ -2,6 +2,7 @@ import 'package:ai_story_generator/screens/ai_stories/dashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../core/app_export.dart';
+import 'card_payment.dart';
 
 class PlansScreen extends StatefulWidget {
   const PlansScreen({super.key});
@@ -91,6 +92,14 @@ class _PlansScreenState extends State<PlansScreen> {
                     setState(() {
                       selectedPlan = "Monthly Plan";
                     });
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CardPaymentScreen(
+                          planPrice: "\$4.99/year",
+                        ),
+                      ),
+                    );
                   },
                 ),
               ),
@@ -104,6 +113,14 @@ class _PlansScreenState extends State<PlansScreen> {
                     setState(() {
                       selectedPlan = "Annual Plan";
                     });
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CardPaymentScreen(
+                          planPrice: "\$49.99/year",
+                        ),
+                      ),
+                    );
                   },
                 ),
               ),
@@ -131,35 +148,13 @@ class _PlansScreenState extends State<PlansScreen> {
                 ),
                 textAlign: TextAlign.center,
               ),
-               SizedBox(height: getProportionateScreenHeight(30)),
+              SizedBox(height: getProportionateScreenHeight(30)),
               SizedBox(
                 width: getProportionateScreenWidth(342),
                 height: getProportionateScreenHeight(60),
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: AppTheme.primaryColor,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30.0),
-                    ),
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 30.0,
-                      vertical: 20.0,
-                    ),
-                  ),
-                  onPressed: () {
-                    // Navigate to Sign In or Sign Up screen
-                  },
-                  child: Text(
-                    "PURCHASE",
-                    style: GoogleFonts.abhayaLibre(
-                      textStyle: const TextStyle(
-                        fontSize: 24.0,
-                        fontWeight: FontWeight.bold,
-                        height: 1.2,
-                        color: AppTheme.whiteColor,
-                      ),
-                    ),
-                  ),
+                child: AppButton(
+                  buttonText: 'Purchase',
+                  onPressed: () {},
                 ),
               ),
             ],
