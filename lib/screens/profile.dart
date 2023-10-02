@@ -2,7 +2,7 @@ import 'package:ai_story_generator/core/app_export.dart';
 import 'package:flutter/material.dart';
 
 class UserProfileScreen extends StatelessWidget {
-  UserProfileScreen({super.key});
+  const UserProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class UserProfileScreen extends StatelessWidget {
           width: wt,
           decoration: BoxDecoration(
               image: DecorationImage(
-                  fit: BoxFit.fill,
+                  fit: BoxFit.cover,
                   image: AssetImage(ImageConstant.profileImage))),
         ),
         Positioned(
