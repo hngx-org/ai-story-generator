@@ -9,10 +9,10 @@ class WelcomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SizeConfig.init(context);
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: AppTheme.whiteColor,
-        body: Column(
+    return Scaffold(
+      backgroundColor: AppTheme.whiteColor,
+      body: SafeArea(
+        child: Column(
           children: <Widget>[
             SizedBox(height: getProportionateScreenHeight(62)),
             SizedBox(
