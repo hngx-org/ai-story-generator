@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
-
 AppTheme appTheme = AppTheme();
 void main() async {
   await GetStorage.init();
@@ -23,15 +22,15 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-          return GetMaterialApp(
-            debugShowCheckedModeBanner: false,
-            theme: ThemeData(
-              // fontFamily: GoogleFonts.abhayaLibre,
-              colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-              useMaterial3: true,
-            ),
-            home: SignInScreen(),
-          );
+    return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        // fontFamily: GoogleFonts.abhayaLibre,
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
+      ),
+      home: SignInScreen(),
+    );
   }
 }
 
