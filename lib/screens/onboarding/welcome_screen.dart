@@ -70,24 +70,12 @@ class WelcomeScreen extends StatelessWidget {
                     SizedBox(
                       width: getProportionateScreenWidth(200),
                       height: 50,
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: AppTheme.primaryColor,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30.0),
-                          ),
-                        ),
+                      child: AppButton(
+
                         onPressed: () {
                           Get.off(const SignInScreen());
                         },
-                        child: const Text(
-                          "Get Started",
-                          style: TextStyle(
-                            fontSize: 16.0,
-                            fontWeight: FontWeight.bold,
-                            color: AppTheme.whiteColor,
-                          ),
-                        ),
+                        buttonText: 'Get Started',
                       ),
                     ),
                   ],
