@@ -6,7 +6,7 @@ import 'package:hng_authentication/authentication.dart';
 import '../core/extensions/extensions.dart';
 import '../core/utils/progress_dialog_utils.dart';
 import '../main.dart';
-import '../screens/ai_stories/dashboard.dart';
+import '../screens/history_screens/dashboard.dart';
 
 class SignInController extends GetxController {
   final TextEditingController emailController = TextEditingController();

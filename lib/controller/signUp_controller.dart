@@ -1,7 +1,7 @@
 import 'package:ai_story_generator/core/app_export.dart';
 import 'package:ai_story_generator/core/extensions/extensions.dart';
 import 'package:ai_story_generator/main.dart';
-import 'package:ai_story_generator/screens/ai_stories/dashboard.dart';
+import 'package:ai_story_generator/screens/history_screens/dashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:hng_authentication/authentication.dart';

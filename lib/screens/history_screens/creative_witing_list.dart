@@ -1,5 +1,5 @@
 import 'package:ai_story_generator/core/app_export.dart';
-import 'package:ai_story_generator/screens/ai_stories/individual_story.dart';
+import 'package:ai_story_generator/screens/history_screens/individual_story.dart';
 import 'package:flutter/material.dart';
 import 'package:iconamoon/iconamoon.dart';
 

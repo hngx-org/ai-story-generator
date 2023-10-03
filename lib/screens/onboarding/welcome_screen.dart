@@ -1,5 +1,6 @@
 import 'package:ai_story_generator/screens/auth/sign_in.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../core/app_export.dart';
 
@@ -18,8 +19,8 @@ class WelcomeScreen extends StatelessWidget {
             SizedBox(
               height: MediaQuery.of(context).size.height / 3,
               width: double.infinity,
-              child: Image.asset(
-                ImageConstant.welcomeImage2,
+              child: SvgPicture.asset(
+                ImageSvgConstant.welcomeImage,
               ),
             ),
             Expanded(

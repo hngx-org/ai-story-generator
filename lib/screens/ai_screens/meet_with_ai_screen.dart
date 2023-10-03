@@ -1,4 +1,5 @@
 import 'package:ai_story_generator/core/app_export.dart';
+import 'package:ai_story_generator/screens/ai_screens/individual_ai_chat.dart';
 import 'package:flutter/material.dart';
 
 class WithAllCategoryScreen extends StatefulWidget {
@@ -13,6 +14,7 @@ class _WithAllCategoryScreenState extends State<WithAllCategoryScreen> {
   Widget build(BuildContext context) {
     SizeConfig.init(context);
     return Scaffold(
+        backgroundColor: AppTheme.whiteColor,
         appBar: AppBar(
           automaticallyImplyLeading: false,
           centerTitle: false,
@@ -33,34 +35,52 @@ class _WithAllCategoryScreenState extends State<WithAllCategoryScreen> {
                   SizedBox(
                     height: getProportionateScreenHeight(45),
                   ),
-                  buildContainer(
-                      title: 'Stories', image: ImageConstant.storyImage),
+                  GestureDetector(
+                    onTap: () {
+                      Get.to(IndividualAiChatScreen(screenType: "Stories"));
+                    },
+                    child: buildContainer(
+                        title: 'Stories', image: ImageConstant.storyImage),
+                  ),
                   SizedBox(
                     height: getProportionateScreenHeight(32),
                   ),
-                  buildContainer(
-                      title: 'Creative Writing',
-                      isDouble: true,
-                      image: ImageConstant.creativeImage),
+                  GestureDetector(
+                    onTap: () {
+                      Get.to(IndividualAiChatScreen(
+                          screenType: "Creative Writing"));
+                    },
+                    child: buildContainer(
+                        title: 'Creative Writing',
+                        isDouble: true,
+                        image: ImageConstant.creativeImage),
+                  ),
                 ],
               ),
               Column(
                 children: [
-                   SizedBox(
+                  SizedBox(
                     height: getProportionateScreenHeight(95),
                   ),
-                  buildContainer(
-                      title: 'Poem', image: ImageConstant.poemImage),
+                  GestureDetector(
+                    onTap: () {
+                      Get.to(IndividualAiChatScreen(screenType: "Poem"));
+                    },
+                    child: buildContainer(
+                        title: 'Poem', image: ImageConstant.poemImage),
+                  ),
                   SizedBox(
                     height: getProportionateScreenHeight(32),
                   ),
-                  buildContainer(
-                      title: 'Stories',
-                     
-                      image: ImageConstant.storyImage),
+                  GestureDetector(
+                    onTap: () {
+                      Get.to(IndividualAiChatScreen(screenType: "Stories"));
+                    },
+                    child: buildContainer(
+                        title: 'Stories', image: ImageConstant.storyImage),
+                  ),
                 ],
               ),
-              
             ],
           ),
         )
@@ -120,9 +140,7 @@ class _WithAllCategoryScreenState extends State<WithAllCategoryScreen> {
               : getProportionateScreenHeight(50),
           bottom: getProportionateScreenHeight(5)),
       decoration: BoxDecoration(
-        color: 
-
-        Color(0xFFFCF8FF),
+        color: Color(0xFFFCF8FF),
         borderRadius: BorderRadius.circular(20),
       ),
       child: Center(

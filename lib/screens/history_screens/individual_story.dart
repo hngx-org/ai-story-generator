@@ -8,6 +8,7 @@ class IndividualStoryScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     SizeConfig.init(context);
     return Scaffold(
+      backgroundColor: AppTheme.whiteColor,
       appBar: AppBar(
         leading: GestureDetector(
           onTap: () {

@@ -1,16 +1,16 @@
 import 'package:ai_story_generator/core/app_export.dart';
-import 'package:ai_story_generator/screens/ai_stories/individual_story.dart';
+import 'package:ai_story_generator/screens/history_screens/individual_story.dart';
 import 'package:flutter/material.dart';
 import 'package:iconamoon/iconamoon.dart';
 
-class PoemList extends StatefulWidget {
-  const PoemList({super.key});
+class StoryList extends StatefulWidget {
+  const StoryList({super.key});
 
   @override
-  State<PoemList> createState() => _PoemListState();
+  State<StoryList> createState() => _StoryListState();
 }
 
-class _PoemListState extends State<PoemList> {
+class _StoryListState extends State<StoryList> {
   final _controller = ScrollController();
   // var indice;
   // final _itemListener = ItemPositionsListener.create();
@@ -45,7 +45,7 @@ class _PoemListState extends State<PoemList> {
       width: getProportionateScreenWidth(390),
       child: ListView.builder(
           controller: _controller,
-          itemCount: poemList.length,
+          itemCount: storyList.length,
           // itemPositionsListener: _itemListener,
           shrinkWrap: true,
           scrollDirection: Axis.horizontal,
@@ -85,7 +85,7 @@ class _PoemListState extends State<PoemList> {
                 child: Column(
                   children: [
                     customCentreText(
-                        inputText: poemList[index].title,
+                        inputText: storyList[index].title,
                         fontSize: 22,
                         weight: FontWeight.w500,
                         colorName: AppTheme.blackColor),
@@ -110,28 +110,28 @@ class _PoemListState extends State<PoemList> {
   }
 }
 
-class PoemTabModel {
+class TabModel {
   final String title;
 
-  PoemTabModel({
+  TabModel({
     required this.title,
   });
 }
 
-List<PoemTabModel> poemList = [
-  PoemTabModel(
-    title: 'The Uncut',
+List<TabModel> storyList = [
+  TabModel(
+    title: 'The River',
   ),
-  PoemTabModel(
-    title: 'The Lovely',
-  ),
-  PoemTabModel(
-    title: 'The Wicked',
-  ),
-  PoemTabModel(
+  TabModel(
     title: 'The Ocean',
   ),
-  PoemTabModel(
-    title: 'The Only',
+  TabModel(
+    title: 'The City',
+  ),
+  TabModel(
+    title: 'The Nile',
+  ),
+  TabModel(
+    title: 'The Bush',
   ),
 ];

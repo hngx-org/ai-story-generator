@@ -24,8 +24,11 @@ class ForgotPassword extends StatelessWidget {
                 height: 20,
               ),
               Center(
-                child: Image.asset(ImageConstant.smallAppLogo),
-              ),
+                  child: Image.asset(
+                    "assets/images/logo.png",
+                    scale: 4,
+                  ),
+                ),
               const SizedBox(
                 height: 99,
               ),
