@@ -7,7 +7,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import 'card_payment.dart';
 
-
 class PlansScreen extends StatefulWidget {
   const PlansScreen({super.key});
 
@@ -16,26 +15,22 @@ class PlansScreen extends StatefulWidget {
 }
 
 class _PlansScreenState extends State<PlansScreen> {
-  String selectedPlan = '';
-
+  String selectedPlan = "Monthly Plan";
   @override
   void initState() {
-    // navigate();
+    selectedPlan = "Monthly Plan";
     // TODO: implement initState
     super.initState();
-  }
-
-  void navigate() {
-    Future.delayed(const Duration(seconds: 2), () {
-      Get.off(const DashBoardScreen());
-    });
   }
 
   @override
   Widget build(BuildContext context) {
     SizeConfig.init(context);
+
     return Scaffold(
+      backgroundColor: AppTheme.whiteColor,
       appBar: AppBar(
+        backgroundColor: Colors.transparent,
         centerTitle: true,
         title: SizedBox(
           child: Image.asset(
@@ -58,7 +53,7 @@ class _PlansScreenState extends State<PlansScreen> {
           child: Column(
             children: [
               SvgPicture.asset(
-                ImageSvgConstant.cardPaymentImage,
+                ImageSvgConstant.planCategoryImage,
                 height: 100,
                 width: 100,
               ),
@@ -100,14 +95,6 @@ class _PlansScreenState extends State<PlansScreen> {
                     setState(() {
                       selectedPlan = "Monthly Plan";
                     });
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => CardPaymentScreen(
-                          planPrice: "\$4.99/year",
-                        ),
-                      ),
-                    );
                   },
                 ),
               ),
@@ -121,14 +108,6 @@ class _PlansScreenState extends State<PlansScreen> {
                     setState(() {
                       selectedPlan = "Annual Plan";
                     });
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => CardPaymentScreen(
-                          planPrice: "\$49.99/year",
-                        ),
-                      ),
-                    );
                   },
                 ),
               ),
@@ -165,7 +144,15 @@ class _PlansScreenState extends State<PlansScreen> {
                 height: getProportionateScreenHeight(60),
                 child: AppButton(
                   buttonText: 'Purchase',
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.to(
+                      CardPaymentScreen(
+                        planPrice: selectedPlan == "Monthly Plan"
+                            ? "\$4.99"
+                            : "\$49.99",
+                      ),
+                    );
+                  },
                 ),
               ),
             ],

@@ -15,7 +15,22 @@ class IndividualAiChatScreen extends StatefulWidget {
 }
 
 class _IndividualAiChatScreenState extends State<IndividualAiChatScreen> {
+  final ScrollController _scrollController = ScrollController();
   bool aiResponse = true;
+
+  void _dismissKeyboard(BuildContext context) {
+    // Use FocusScope to unfocus (dismiss) the keyboard
+    FocusScope.of(context).unfocus();
+  }
+
+  void _moveToBottomView() {
+    _scrollController.animateTo(
+      _scrollController.position.maxScrollExtent,
+      duration: Duration(milliseconds: 300),
+      curve: Curves.easeOut,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final _aiController = Get.put(AiController());
@@ -56,6 +71,7 @@ class _IndividualAiChatScreenState extends State<IndividualAiChatScreen> {
         children: [
           Expanded(
             child: ListView.builder(
+              controller: _scrollController,
               itemCount: _aiController.aiInput.length,
               itemBuilder: (context, index) {
                 if (index == 0 || index % 2 == 0) {
@@ -89,6 +105,7 @@ class _IndividualAiChatScreenState extends State<IndividualAiChatScreen> {
               aiResponse: aiResponse,
               onTap: () async {
                 if (_aiController.textInputController.text.isNotEmpty) {
+                  _dismissKeyboard(context);
                   setState(() {
                     aiResponse = false;
                     _aiController.aiInput
@@ -96,7 +113,7 @@ class _IndividualAiChatScreenState extends State<IndividualAiChatScreen> {
                     _aiController.textInputController.clear();
                   });
                   await Future.delayed(Duration(seconds: 5));
-
+                  _moveToBottomView();
                   setState(() {
                     aiResponse = true;
                     _aiController.aiInput.add({
