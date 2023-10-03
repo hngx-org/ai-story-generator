@@ -48,7 +48,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
         children: [
           SizedBox(
             width: getProportionateScreenWidth(85),
-            height: getProportionateScreenHeight(80),
+            height: getProportionateScreenHeight(82),
             child: GestureDetector(
               onTap: () {
                 setState(() {
@@ -78,21 +78,21 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
               ),
             ),
           ),
-          Stack(
-            clipBehavior: Clip.none,
-            children: [
-              SizedBox(
-                height: getProportionateScreenHeight(75),
-                width: getProportionateScreenWidth(75),
-              ),
-              Positioned(
-                bottom: getProportionateScreenHeight(40),
-                child: InkWell(
-                  onTap: () {
-                    setState(() {
-                      currentPage = 1;
-                    });
-                  },
+          GestureDetector(
+            onTap: () {
+              setState(() {
+                currentPage = 1;
+              });
+            },
+            child: Stack(
+              clipBehavior: Clip.none,
+              children: [
+                SizedBox(
+                  height: getProportionateScreenHeight(75),
+                  width: getProportionateScreenWidth(75),
+                ),
+                Positioned(
+                  bottom: getProportionateScreenHeight(40),
                   child: Container(
                     height: getProportionateScreenHeight(75),
                     width: getProportionateScreenWidth(75),
@@ -105,13 +105,13 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                       size: getProportionateScreenWidth(30),
                     ),
                   ),
-                ),
-              )
-            ],
+                )
+              ],
+            ),
           ),
           SizedBox(
             width: getProportionateScreenWidth(85),
-            height: getProportionateScreenHeight(80),
+            height: getProportionateScreenHeight(82),
             child: InkWell(
               onTap: () {
                 setState(() {

@@ -1,12 +1,13 @@
 import 'package:ai_story_generator/core/app_export.dart';
 import 'package:ai_story_generator/core/extensions/extensions.dart';
 import 'package:ai_story_generator/main.dart';
-import 'package:ai_story_generator/screens/history_screens/dashboard.dart';
+import 'package:ai_story_generator/screens/auth/sign_in.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:hng_authentication/authentication.dart';
 
 import '../core/utils/progress_dialog_utils.dart';
+import '../screens/payments/plan_categories.dart';
 
 class SignUpController extends GetxController {
   final TextEditingController fullNameController = TextEditingController();
@@ -50,24 +51,34 @@ class SignUpController extends GetxController {
       print("--------- ${result.email}");
       print("--------- ${result.cookie}");
       print("--------- ${result.id}");
+
       localStorage.write('fullName', result.name);
       localStorage.write('email', result.email);
       localStorage.write('cookie', result.cookie);
       localStorage.write('id', result.id);
-
-      // Registration failed, display an error message
-
-      //  if (result == "User Created Succesfully") {
       localStorage.write("isLoggedIn", true);
-      Get.off(const DashBoardScreen());
+
+      Get.off(const PlansScreen());
       successSnackbar('SignUp successful');
-      // } else {
-      //   errorSnackbar("Something went wrong, please try again");
-      // }
     } else {
       print('errror:   eeeeeee');
       ProgressDialogUtils.hideProgressDialog();
       errorSnackbar('SignUp ERROR');
+    }
+  }
+
+  void logOut() async {
+    // print("----- logOut");
+    ProgressDialogUtils.showProgressDialog();
+    final authRepository = Authentication();
+    final result = await authRepository.logout(localStorage.read('email'));
+    // print("=== $result");
+    ProgressDialogUtils.hideProgressDialog();
+    if (result["message"] == "success") {
+      Get.off(const SignInScreen());
+      localStorage.write("isLoggedIn", false);
+    } else {
+      errorSnackbar(result["message"]);
     }
   }
 }

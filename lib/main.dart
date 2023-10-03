@@ -15,7 +15,7 @@ void main() async {
   await GetStorage.init();
   runApp(
     DevicePreview(
-      enabled: false,
+      enabled: true,
       builder: (context) => const MyApp(),
     ),
   );
