@@ -15,10 +15,12 @@ class PlansScreen extends StatefulWidget {
 }
 
 class _PlansScreenState extends State<PlansScreen> {
-  String selectedPlan = '';
-
+  String selectedPlan = "Monthly Plan";
   @override
   void initState() {
+
+    selectedPlan = "Monthly Plan";
+
     // TODO: implement initState
     super.initState();
   }
@@ -26,8 +28,11 @@ class _PlansScreenState extends State<PlansScreen> {
   @override
   Widget build(BuildContext context) {
     SizeConfig.init(context);
+
     return Scaffold(
+      backgroundColor: AppTheme.whiteColor,
       appBar: AppBar(
+        backgroundColor: Colors.transparent,
         centerTitle: true,
         title: SizedBox(
           child: Image.asset(
@@ -50,7 +55,7 @@ class _PlansScreenState extends State<PlansScreen> {
           child: Column(
             children: [
               SvgPicture.asset(
-                ImageSvgConstant.cardPaymentImage,
+                ImageSvgConstant.planCategoryImage,
                 height: 100,
                 width: 100,
               ),
@@ -92,14 +97,7 @@ class _PlansScreenState extends State<PlansScreen> {
                     setState(() {
                       selectedPlan = "Monthly Plan";
                     });
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const CardPaymentScreen(
-                          planPrice: "\$4.99/year",
-                        ),
-                      ),
-                    );
+
                   },
                 ),
               ),
@@ -113,14 +111,7 @@ class _PlansScreenState extends State<PlansScreen> {
                     setState(() {
                       selectedPlan = "Annual Plan";
                     });
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const CardPaymentScreen(
-                          planPrice: "\$49.99/year",
-                        ),
-                      ),
-                    );
+
                   },
                 ),
               ),
@@ -157,7 +148,15 @@ class _PlansScreenState extends State<PlansScreen> {
                 height: getProportionateScreenHeight(60),
                 child: AppButton(
                   buttonText: 'Purchase',
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.to(
+                      CardPaymentScreen(
+                        planPrice: selectedPlan == "Monthly Plan"
+                            ? "\$4.99"
+                            : "\$49.99",
+                      ),
+                    );
+                  },
                 ),
               ),
             ],

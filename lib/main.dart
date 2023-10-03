@@ -6,6 +6,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
+
+import 'screens/history_screens/dashboard.dart';
+import 'screens/onboarding/welcome_screen.dart';
+import 'screens/payments/plan_categories.dart';
+
+
 AppTheme appTheme = AppTheme();
 GetStorage localStorage = GetStorage();
 void main() async {
@@ -30,14 +36,11 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home:
 
-          //  localStorage.read("isLoggedIn") == true?
+      home: localStorage.read("isLoggedIn") == true
+          ? const DashBoardScreen()
+          : const WelcomeScreen(),
 
-          //  const DashBoardScreen()
-
-          //  : const
-          const WelcomeScreen(),
     );
   }
 }

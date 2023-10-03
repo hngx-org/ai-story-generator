@@ -59,8 +59,9 @@ dependencies:
   iconamoon: ^0.0.3
   scrollable_positioned_list: ^0.3.8
   flutter_launcher_icons: ^0.13.1
-  hng_authentication: ^0.0.3
+  # hng_authentication: ^0.0.3
   flutter_svg: ^2.0.7
+  hng_authentication: ^0.1.4
  
 
 dev_dependencies:
