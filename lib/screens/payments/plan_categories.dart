@@ -18,7 +18,9 @@ class _PlansScreenState extends State<PlansScreen> {
   String selectedPlan = "Monthly Plan";
   @override
   void initState() {
+
     selectedPlan = "Monthly Plan";
+
     // TODO: implement initState
     super.initState();
   }
@@ -95,6 +97,7 @@ class _PlansScreenState extends State<PlansScreen> {
                     setState(() {
                       selectedPlan = "Monthly Plan";
                     });
+
                   },
                 ),
               ),
@@ -108,6 +111,7 @@ class _PlansScreenState extends State<PlansScreen> {
                     setState(() {
                       selectedPlan = "Annual Plan";
                     });
+
                   },
                 ),
               ),

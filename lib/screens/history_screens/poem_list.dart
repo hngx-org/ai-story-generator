@@ -12,24 +12,7 @@ class PoemList extends StatefulWidget {
 
 class _PoemListState extends State<PoemList> {
   final _controller = ScrollController();
-  // var indice;
-  // final _itemListener = ItemPositionsListener.create();
-  // int selectedIndex = 0;
-
-  // @override
-  // void initState() {
-  //   _itemListener.itemPositions.addListener(() {
-  //     indice = _itemListener.itemPositions.value.where((item) {
-  //       final isTopVisible = item.itemLeadingEdge >= 0;
-  //       final isBottomVisible = item.itemTrailingEdge <= 1;
-
-  //       return isTopVisible && isBottomVisible;
-  //     }).map((item) => item.index);
-  //     print(indice);
-  //   });
-  //   // TODO: implement initState
-  //   super.initState();
-  // }
+ 
 
   @override
   void dispose() {
@@ -46,7 +29,6 @@ class _PoemListState extends State<PoemList> {
       child: ListView.builder(
           controller: _controller,
           itemCount: poemList.length,
-          // itemPositionsListener: _itemListener,
           shrinkWrap: true,
           scrollDirection: Axis.horizontal,
           itemBuilder: (context, index) {
@@ -55,7 +37,7 @@ class _PoemListState extends State<PoemList> {
                     .round();
             return GestureDetector(
               onTap: () {
-                Get.to(IndividualStoryScreen());
+                Get.to(const IndividualStoryScreen());
               },
               child: Container(
                 padding: EdgeInsets.only(

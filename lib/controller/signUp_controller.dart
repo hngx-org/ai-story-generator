@@ -26,12 +26,12 @@ class SignUpController extends GetxController {
         confirmPasswordController.text.trim().isEmpty) {
       errorSnackbar('Email or Password can not be empty');
     } else if (!emailController.text.emailValidation) {
-      errorSnackbar('Please enter a vaild email');
+      errorSnackbar('Please enter a valid email');
     } else if (passwordController.text.passwordValidation) {
       errorSnackbar("Please enter a strong password");
     } else if (passwordController.text.trim() !=
         confirmPasswordController.text.trim()) {
-      errorSnackbar('password and confirm is not the same');
+      errorSnackbar('password mismatch');
     } else {
       signUp();
     }
