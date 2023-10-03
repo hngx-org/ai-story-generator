@@ -3,7 +3,6 @@ import 'package:ai_story_generator/screens/history_screens/your_story.dart';
 import 'package:ai_story_generator/screens/profile.dart';
 import 'package:flutter/material.dart';
 import '../ai_screens/meet_with_ai_screen.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class DashBoardScreen extends StatefulWidget {
   const DashBoardScreen({super.key});
