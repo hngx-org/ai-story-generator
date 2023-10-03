@@ -1,6 +1,6 @@
-import 'package:ai_story_generator/screens/ai_stories/creative_witing_list.dart';
-import 'package:ai_story_generator/screens/ai_stories/poem_list.dart';
-import 'package:ai_story_generator/screens/ai_stories/story_list.dart';
+import 'package:ai_story_generator/screens/history_screens/creative_witing_list.dart';
+import 'package:ai_story_generator/screens/history_screens/poem_list.dart';
+import 'package:ai_story_generator/screens/history_screens/story_list.dart';
 import 'package:flutter/material.dart';
 
 import '../../core/app_export.dart';
@@ -27,7 +27,9 @@ class _YourStoryScreenState extends State<YourStoryScreen> {
   Widget build(BuildContext context) {
     SizeConfig.init(context);
     return Scaffold(
+        backgroundColor: AppTheme.whiteColor,
         appBar: AppBar(
+          backgroundColor: Colors.transparent,
           automaticallyImplyLeading: false,
           centerTitle: false,
           title: customNormalText(

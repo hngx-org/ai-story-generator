@@ -24,7 +24,10 @@ class ChangePassword extends StatelessWidget {
                 height: 20,
               ),
               Center(
-                child: Image.asset(ImageConstant.smallAppLogo),
+                child: Image.asset(
+                  "assets/images/logo.png",
+                  scale: 4,
+                ),
               ),
               const SizedBox(
                 height: 99,
@@ -48,7 +51,8 @@ class ChangePassword extends StatelessWidget {
                 height: 30,
               ),
               AuthTextField(
-                textFieldController: _changePasswordController.oldPasswordController,
+                textFieldController:
+                    _changePasswordController.oldPasswordController,
                 labelText: "Old password",
                 hintText: "Input Old password",
               ),
@@ -56,7 +60,8 @@ class ChangePassword extends StatelessWidget {
                 height: 40,
               ),
               AuthTextField(
-                textFieldController: _changePasswordController.newPasswordController,
+                textFieldController:
+                    _changePasswordController.newPasswordController,
                 labelText: "New password",
                 hintText: "Input new password",
               ),

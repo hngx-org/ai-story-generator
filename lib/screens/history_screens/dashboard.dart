@@ -1,8 +1,9 @@
 import 'package:ai_story_generator/core/app_export.dart';
-import 'package:ai_story_generator/screens/ai_stories/your_story.dart';
-import 'package:ai_story_generator/screens/history/history_with_all_category.dart';
+import 'package:ai_story_generator/screens/history_screens/your_story.dart';
 import 'package:ai_story_generator/screens/profile.dart';
 import 'package:flutter/material.dart';
+import '../ai_screens/meet_with_ai_screen.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class DashBoardScreen extends StatefulWidget {
   const DashBoardScreen({super.key});
@@ -23,14 +24,18 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
   Widget build(BuildContext context) {
     SizeConfig.init(context);
     return Scaffold(
+        backgroundColor: AppTheme.whiteColor,
         body: SafeArea(
             child: Stack(
-      children: [
-        pages[currentPage],
-        Positioned(
-            left: 0, right: 0, bottom: 0, child: buildBottomNav(currentPage)),
-      ],
-    ))
+          children: [
+            pages[currentPage],
+            Positioned(
+                left: 0,
+                right: 0,
+                bottom: 0,
+                child: buildBottomNav(currentPage)),
+          ],
+        ))
 
         //      Column(
         //   children: [
@@ -91,6 +96,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
 
   Container buildBottomNav(int index) {
     return Container(
+      color: AppTheme.whiteColor,
       padding: EdgeInsets.symmetric(
           horizontal: getProportionateScreenWidth(24),
           vertical: getProportionateScreenHeight(2)),
@@ -109,9 +115,10 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
               child: Column(
                 children: [
                   SizedBox(
-                      height: getProportionateScreenHeight(49),
-                      width: getProportionateScreenWidth(73),
-                      child: Image(image: AssetImage(ImageConstant.books))),
+                    height: getProportionateScreenHeight(49),
+                    width: getProportionateScreenWidth(73),
+                    child: Image.asset(ImageConstant.books),
+                  ),
                   customCentreText(
                       inputText: 'Your Stories',
                       fontSize: 16,
@@ -171,10 +178,13 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
               child: Column(
                 children: [
                   SizedBox(
-                      height: getProportionateScreenHeight(49),
-                      width: getProportionateScreenWidth(73),
-                      child: Image(
-                          image: AssetImage(ImageConstant.profileAvatar))),
+                    height: getProportionateScreenHeight(49),
+                    width: getProportionateScreenWidth(73),
+                    child: Image.asset(
+                      ImageConstant.profileAvatar,
+                      scale: 4,
+                    ),
+                  ),
                   customCentreText(
                       inputText: 'Profile',
                       fontSize: 16,

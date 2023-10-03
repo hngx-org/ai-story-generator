@@ -1,7 +1,8 @@
-import 'package:ai_story_generator/screens/ai_stories/dashboard.dart';
+import 'package:ai_story_generator/screens/history_screens/dashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../core/app_export.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class PlansScreen extends StatefulWidget {
   const PlansScreen({super.key});
@@ -34,7 +35,8 @@ class _PlansScreenState extends State<PlansScreen> {
         centerTitle: true,
         title: SizedBox(
           child: Image.asset(
-            ImageConstant.smallAppLogo,
+            "assets/images/logo.png",
+            scale: 4,
           ),
         ),
         actions: [
@@ -51,31 +53,34 @@ class _PlansScreenState extends State<PlansScreen> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(
-                height: getProportionateScreenHeight(220),
-                width: double.infinity,
-                child: Image.asset(
-                  ImageConstant.planCategoryImage,
-                ),
+              SvgPicture.asset(
+                ImageSvgConstant.cardPaymentImage,
+                height: 100,
+                width: 100,
+              ),
+              const SizedBox(
+                height: 10,
               ),
               Text(
                 "7 days Free Trial\nGet Unlimited Access",
-                style: GoogleFonts.abrilFatface(
+                style: GoogleFonts.abhayaLibre(
                   textStyle: const TextStyle(
                     fontSize: 24.0,
-                    fontWeight: FontWeight.normal,
-                    color: AppTheme.welcomeTextColor,
+                    fontWeight: FontWeight.w800,
+                    color: AppTheme.blackColor,
+                    height: 1.2,
                   ),
                 ),
                 textAlign: TextAlign.center,
               ),
               Text(
                 "When you subscribe, you’ll gain\ninstant unlimited access. ",
-                style: GoogleFonts.abrilFatface(
+                style: GoogleFonts.abhayaLibre(
                   textStyle: TextStyle(
-                    fontSize: 14.0,
-                    fontWeight: FontWeight.normal,
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.w800,
                     color: AppTheme.black50Color,
+                    height: 1.2,
                   ),
                 ),
                 textAlign: TextAlign.center,
@@ -107,14 +112,17 @@ class _PlansScreenState extends State<PlansScreen> {
                   },
                 ),
               ),
+              const SizedBox(
+                height: 10,
+              ),
               Text(
                 "Recuring billing, cancel anytime",
-                style: GoogleFonts.abrilFatface(
+                style: GoogleFonts.abhayaLibre(
                   textStyle: const TextStyle(
-                    fontSize: 18.0,
-                    fontWeight: FontWeight.w300,
+                    fontSize: 20.0,
+                    fontWeight: FontWeight.w800,
                     fontStyle: FontStyle.normal,
-                    color: AppTheme.welcomeTextColor,
+                    color: AppTheme.blackColor,
                   ),
                 ),
                 textAlign: TextAlign.center,
@@ -122,16 +130,16 @@ class _PlansScreenState extends State<PlansScreen> {
               Text(
                 "This app subscription offers recurring billing,\nallowing you to be charged periodically, while also\ngiving you the flexibility to cancel your subscription at any time.",
                 style: GoogleFonts.abhayaLibre(
-                  textStyle: const TextStyle(
+                  textStyle: TextStyle(
                     fontSize: 12.0,
-                    fontWeight: FontWeight.w300,
+                    fontWeight: FontWeight.w800,
                     height: 1.2,
-                    color: AppTheme.welcomeTextColor,
+                    color: AppTheme.black50Color,
                   ),
                 ),
                 textAlign: TextAlign.center,
               ),
-               SizedBox(height: getProportionateScreenHeight(30)),
+              SizedBox(height: getProportionateScreenHeight(30)),
               SizedBox(
                 width: getProportionateScreenWidth(342),
                 height: getProportionateScreenHeight(60),
@@ -212,17 +220,17 @@ class PlanOption extends StatelessWidget {
                   children: [
                     Text(
                       title,
-                      style: GoogleFonts.abrilFatface(
+                      style: GoogleFonts.abhayaLibre(
                         textStyle: const TextStyle(
                           fontSize: 24.0,
-                          fontWeight: FontWeight.normal,
+                          fontWeight: FontWeight.w800,
                           color: AppTheme.welcomeTextColor,
                         ),
                       ),
                     ),
                     Text(
                       price,
-                      style: GoogleFonts.abrilFatface(
+                      style: GoogleFonts.abhayaLibre(
                         textStyle: TextStyle(
                           fontSize: 14.0,
                           fontWeight: FontWeight.normal,

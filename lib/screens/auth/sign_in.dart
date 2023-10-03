@@ -7,6 +7,7 @@ import 'package:ai_story_generator/widgets/auth_textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 // import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SignInScreen extends StatefulWidget {
@@ -33,13 +34,16 @@ class _SignInScreenState extends State<SignInScreen> {
                   height: 20,
                 ),
                 Center(
-                  child: Image.asset(ImageConstant.smallAppLogo),
+                  child: Image.asset(
+                    "assets/images/logo.png",
+                    scale: 4,
+                  ),
                 ),
                 const SizedBox(
                   height: 20,
                 ),
                 Center(
-                  child: Image.asset(ImageConstant.editIcon),
+                  child: SvgPicture.asset(ImageSvgConstant.editIcon),
                 ),
                 const SizedBox(
                   height: 10,

@@ -1,5 +1,5 @@
 import 'package:ai_story_generator/core/app_export.dart';
-import 'package:ai_story_generator/screens/history/user_chat_container.dart';
+import 'package:ai_story_generator/screens/ai_screens/user_chat_container.dart';
 import 'package:flutter/material.dart';
 
 class IndividualAiChatScreen extends StatelessWidget {
