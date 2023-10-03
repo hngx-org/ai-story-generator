@@ -43,14 +43,24 @@ class SignUpController extends GetxController {
     final result = await authRepository.signUp(emailController.text.trim(),
         fullNameController.text.trim(), passwordController.text.trim());
     print("--------- $result");
+
     ProgressDialogUtils.hideProgressDialog();
     if (result != null) {
+      print("--------- ${result.name}");
+      print("--------- ${result.email}");
+      print("--------- ${result.cookie}");
+      print("--------- ${result.id}");
+      localStorage.write('fullName', result.name);
+      localStorage.write('email', result.email);
+      localStorage.write('cookie', result.cookie);
+      localStorage.write('id', result.id);
+
       // Registration failed, display an error message
 
       //  if (result == "User Created Succesfully") {
-        localStorage.write("isLoggedIn", true);
-        Get.off(const DashBoardScreen());
-        successSnackbar('SignUp successful');
+      localStorage.write("isLoggedIn", true);
+      Get.off(const DashBoardScreen());
+      successSnackbar('SignUp successful');
       // } else {
       //   errorSnackbar("Something went wrong, please try again");
       // }
