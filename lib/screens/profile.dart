@@ -1,5 +1,6 @@
 import 'package:ai_story_generator/core/app_export.dart';
 import 'package:ai_story_generator/main.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 import '../controller/signUp_controller.dart';
@@ -78,12 +79,25 @@ class UserProfileScreen extends StatelessWidget {
                                 colorName: const Color(0x6E000000),
                               ),
                             ],
-                          )
+                          ),
+                          RichText(
+                            text: TextSpan(
+                                text: 'Get a plan',
+                                style: TextStyle(color: Colors.black),
+                                children: [
+                                  new TextSpan(
+                                    text: 'Tap here.',
+                                    recognizer: TapGestureRecognizer()
+                                      ..onTap = () => print('Tap Here onTap'),
+                                  )
+                                ]),
+                          ),
                         ],
                       ),
                       const Spacer(),
                       GestureDetector(
                         onTap: () {
+                          print("got here");
                           _signUpController.logOut();
                         },
                         child: const Padding(
