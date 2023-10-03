@@ -2,10 +2,10 @@ class ImageSvgConstant {
   static const String smallAppLogo = "assets/svg_images/logo.svg";
   // static const String appLogo = "assets/svg_images/app_logo_big.svg";
   // static const String books = "assets/images/books.png";
-  static const String cardPaymentImage = "assets/svg_images/plans_image.svg";
+  static const String cardPaymentImage = "assets/svg_images/card_logo.svg";
   static const String chatBotImage = "assets/svg_images/chatbot.svg";
-  // static const String planCategoryImage =
-  //     "assets/svg_images/plan_category_image.svg";
+  static const String planCategoryImage =
+      "assets/svg_images/plans_image.svg";
   static const String profileImage = "assets/svg_images/profile.svg";
   static const String welcomeImage = "assets/svg_images/welcome_image.svg";
   // static const String welcomeImage2 = ‘assets/svg_images/welcome_image2.svg’;
