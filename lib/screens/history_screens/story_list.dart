@@ -12,24 +12,6 @@ class StoryList extends StatefulWidget {
 
 class _StoryListState extends State<StoryList> {
   final _controller = ScrollController();
-  // var indice;
-  // final _itemListener = ItemPositionsListener.create();
-  // int selectedIndex = 0;
-
-  // @override
-  // void initState() {
-  //   _itemListener.itemPositions.addListener(() {
-  //     indice = _itemListener.itemPositions.value.where((item) {
-  //       final isTopVisible = item.itemLeadingEdge >= 0;
-  //       final isBottomVisible = item.itemTrailingEdge <= 1;
-
-  //       return isTopVisible && isBottomVisible;
-  //     }).map((item) => item.index);
-  //     print(indice);
-  //   });
-  //   // TODO: implement initState
-  //   super.initState();
-  // }
 
   @override
   void dispose() {
@@ -46,7 +28,6 @@ class _StoryListState extends State<StoryList> {
       child: ListView.builder(
           controller: _controller,
           itemCount: storyList.length,
-          // itemPositionsListener: _itemListener,
           shrinkWrap: true,
           scrollDirection: Axis.horizontal,
           itemBuilder: (context, index) {

@@ -12,24 +12,6 @@ class CreativeWritingList extends StatefulWidget {
 
 class _CreativeWritingListState extends State<CreativeWritingList> {
   final _controller = ScrollController();
-  // var indice;
-  // final _itemListener = ItemPositionsListener.create();
-  // int selectedIndex = 0;
-
-  // @override
-  // void initState() {
-  //   _itemListener.itemPositions.addListener(() {
-  //     indice = _itemListener.itemPositions.value.where((item) {
-  //       final isTopVisible = item.itemLeadingEdge >= 0;
-  //       final isBottomVisible = item.itemTrailingEdge <= 1;
-
-  //       return isTopVisible && isBottomVisible;
-  //     }).map((item) => item.index);
-  //     print(indice);
-  //   });
-  //   // TODO: implement initState
-  //   super.initState();
-  // }
 
   @override
   void dispose() {
@@ -46,7 +28,6 @@ class _CreativeWritingListState extends State<CreativeWritingList> {
       child: ListView.builder(
           controller: _controller,
           itemCount: creativeList.length,
-          // itemPositionsListener: _itemListener,
           shrinkWrap: true,
           scrollDirection: Axis.horizontal,
           itemBuilder: (context, index) {
@@ -55,7 +36,7 @@ class _CreativeWritingListState extends State<CreativeWritingList> {
                     .round();
             return GestureDetector(
               onTap: () {
-                Get.to(IndividualStoryScreen());
+                Get.to(const IndividualStoryScreen());
               },
               child: Container(
                 padding: EdgeInsets.only(

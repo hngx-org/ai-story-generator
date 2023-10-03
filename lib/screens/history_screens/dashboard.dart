@@ -34,63 +34,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                 bottom: 0,
                 child: buildBottomNav(currentPage)),
           ],
-        ))
-
-        //      Column(
-        //   children: [
-
-        //     Expanded(flex: 15, child: pages[currentPage]),
-        //     Expanded(
-        //       flex: 2,
-        //       child: Align(
-        //         alignment: FractionalOffset.bottomCenter,
-        //         child: buildBottomNav(),
-        //       ),
-        //     )
-        //   ],
-        // )),
-
-        // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        // floatingActionButton: FloatingActionButton(
-        //     backgroundColor: AppTheme.redColor,
-        //     child: Icon(
-        //       Icons.add_rounded,
-        //       color: AppTheme.whiteColor,
-        //       size: getProportionateScreenWidth(30),
-        //     ),
-        //     onPressed: () {
-        //       setState(() {
-        //         currentPage = 2;
-        //       });
-        //     }),
-        // bottomNavigationBar: BottomNavigationBar(
-        //   backgroundColor: AppTheme.whiteColor,
-        //   currentIndex: currentPage,
-        //   onTap: (index) {
-        //     setState(() {
-        //       currentPage = index;
-        //     });
-        //   },
-        //   type: BottomNavigationBarType.fixed,
-        //   items: [
-        //     _buildBottomNavigationBarItem(
-        //       icon: Image(image: AssetImage(ImageConstant.books)),
-        //       title: 'Your Story',
-        //       activeIcon: Image(image: AssetImage(ImageConstant.books)),
-        //     ),
-        //     _buildBottomNavigationBarItem(
-        //         icon: Icon(
-        //           Icons.person_2_rounded,
-        //           size: getProportionateScreenWidth(40),
-        //         ),
-        //         title: 'Profile',
-        //         activeIcon: Icon(
-        //           Icons.person,
-        //           size: getProportionateScreenWidth(28),
-        //         )),
-        //   ],
-        // ),
-        );
+        )));
   }
 
   Container buildBottomNav(int index) {

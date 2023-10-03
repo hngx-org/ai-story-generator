@@ -7,7 +7,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import 'card_payment.dart';
 
-
 class PlansScreen extends StatefulWidget {
   const PlansScreen({super.key});
 
@@ -20,15 +19,8 @@ class _PlansScreenState extends State<PlansScreen> {
 
   @override
   void initState() {
-    // navigate();
     // TODO: implement initState
     super.initState();
-  }
-
-  void navigate() {
-    Future.delayed(const Duration(seconds: 2), () {
-      Get.off(const DashBoardScreen());
-    });
   }
 
   @override
@@ -103,7 +95,7 @@ class _PlansScreenState extends State<PlansScreen> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => CardPaymentScreen(
+                        builder: (context) => const CardPaymentScreen(
                           planPrice: "\$4.99/year",
                         ),
                       ),
@@ -124,7 +116,7 @@ class _PlansScreenState extends State<PlansScreen> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => CardPaymentScreen(
+                        builder: (context) => const CardPaymentScreen(
                           planPrice: "\$49.99/year",
                         ),
                       ),

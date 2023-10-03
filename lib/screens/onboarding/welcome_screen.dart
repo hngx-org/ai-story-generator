@@ -72,7 +72,6 @@ class WelcomeScreen extends StatelessWidget {
                       width: getProportionateScreenWidth(200),
                       height: 50,
                       child: AppButton(
-
                         onPressed: () {
                           Get.off(const SignInScreen());
                         },
