@@ -2,7 +2,6 @@ import 'package:ai_story_generator/controller/sign_In_controller.dart';
 import 'package:ai_story_generator/core/app_export.dart';
 import 'package:ai_story_generator/screens/auth/reset_password.dart';
 import 'package:ai_story_generator/screens/auth/sign_up.dart';
-import 'package:ai_story_generator/screens/payments/plan_categories.dart';
 import 'package:ai_story_generator/widgets/auth_textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -121,9 +120,9 @@ class _SignInScreenState extends State<SignInScreen> {
                 AppButton(
                   buttonText: "Sign In",
                   onPressed: () {
-                    Get.off(const PlansScreen());
+                    // Get.off(const PlansScreen());
                     // Get.off(const ChangePassword());
-                    // _signInController.validation();
+                    _signInController.validation();
                   },
                 ),
                 const SizedBox(

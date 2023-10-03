@@ -1,4 +1,5 @@
 import 'package:ai_story_generator/core/app_export.dart';
+import 'package:ai_story_generator/main.dart';
 import 'package:flutter/material.dart';
 
 class UserProfileScreen extends StatelessWidget {
@@ -7,6 +8,8 @@ class UserProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double wt = MediaQuery.sizeOf(context).width;
+    final String fullName = localStorage.read('fullName');
+    final String email = localStorage.read('email');
     SizeConfig.init(context);
     return Scaffold(
         backgroundColor: AppTheme.whiteColor,
@@ -41,7 +44,7 @@ class UserProfileScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       customNormalText(
-                          inputText: 'Sarah Reeve',
+                          inputText: fullName,
                           fontSize: 24,
                           weight: FontWeight.w500,
                           colorName: AppTheme.blackColor),
@@ -59,7 +62,7 @@ class UserProfileScreen extends StatelessWidget {
                             width: getProportionateScreenWidth(20),
                           ),
                           customNormalText(
-                              inputText: 'Sarahrevee@gmail..com',
+                              inputText: email,
                               fontSize: 16,
                               weight: FontWeight.w500,
                               colorName: Color(0x6E000000)),
