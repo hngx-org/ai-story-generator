@@ -38,13 +38,12 @@ class ChatTextField extends StatelessWidget {
                     child: SvgPicture.asset("assets/svg_images/send.svg"),
                   ),
                 )
-              : SizedBox(
-                  width: 10,
-                  height: 10,
+              : const Padding(
+                  padding: EdgeInsets.all(10.0),
                   child: CircularProgressIndicator.adaptive(
                     strokeWidth: 4,
                     valueColor: AlwaysStoppedAnimation<Color>(
-                      Colors.black,
+                      Colors.black54,
                     ),
                   ),
                 ),

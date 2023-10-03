@@ -1,8 +1,6 @@
 import 'package:ai_story_generator/core/app_export.dart';
 import 'package:flutter/material.dart';
 
-import '../../core/utils/progress_dialog_utils.dart';
-
 class AiChatContainer extends StatelessWidget {
   const AiChatContainer({super.key, required this.inputText,});
   final String inputText;

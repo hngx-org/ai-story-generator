@@ -28,7 +28,7 @@ class _IndividualAiChatScreenState extends State<IndividualAiChatScreen> {
           },
           child: Icon(
             Icons.keyboard_arrow_left,
-            size: getProportionateScreenWidth(29),
+            size: getProportionateScreenWidth(30),
           ),
         ),
         centerTitle: true,
@@ -42,13 +42,13 @@ class _IndividualAiChatScreenState extends State<IndividualAiChatScreen> {
           IconButton(
             onPressed: () {
               setState(() {
-                _aiController.aiInput.add({
-                  "ai":
-                      "Lorem ipsum dolor sit amet consectetur. Phasellus leo felis ac ut a eu. Id tincidunt scelerisque malesuada etiam elit sodales sem amet suspendisse. Tortor vitae vulputate ipsum risus dignissim adipiscing lobortis. Porttitor volutpat dolor faucibus lobortis dis orci et et. Senectus id pulvinar odio. \n\nfermentum elementum tellus ut mauris. Fringilla pellentesque lorem neque volutpat. Eu morbi dui morbi aliquam eu consequat blandit dignissim dolor. Nullam interdum sed etiam at id varius nunc. Consectetur id vitae purus. \n\nrhoncus volutpat velit ac bibendum nisi. Id ipsum amet eu sem porta auctor vestibulum. Mauris nunc enim est lorem velit velit. Justo tristique dictum euismod id eros lorem orci mauris. Aliquet in blandit nibh commodo praesent euismod a. Dolor eleifend quam tempus quispellentesque gravida. Sagittis vulputate egestas eget aliquet odio. Amet rutrum pellentesque aliquam tempus nibh. \n\nsollicitudin odio netus ac. Aenean vulputate morbi tempus gravida. Tincidunt turpis purus rutrum amet tincidunt. Ut nunc ut suspendisse nisi ut. Tellus proin rhoncus mauris a lacus. Vel viverra aliquet imperdiet eget integer netus. Commodo dignissim ultricies tellus viverra vulputate est vive tristique. Porttitor at hendrerit adipiscing phasellus facilisis vulputate. In varius cras imperdiet pretium in tellus tempus blandit imperdiet."
-                });
+                _aiController.aiInput.clear();
               });
             },
-            icon: Icon(Icons.feedback_outlined),
+            icon: Icon(
+              Icons.delete_outline_rounded,
+              size: getProportionateScreenWidth(28),
+            ),
           ),
         ],
       ),
