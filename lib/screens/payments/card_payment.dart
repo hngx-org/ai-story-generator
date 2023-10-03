@@ -74,17 +74,42 @@ class _CardPaymentScreenState extends State<CardPaymentScreen> {
                       ),
                     ),
                     Divider(),
-                    TextField(
-                      decoration: InputDecoration(
-                        border: InputBorder.none,
-                        hintText: "MM/YY",
-                        hintStyle: TextStyle(
-                          fontSize: 18.0,
-                          fontWeight: FontWeight.w300,
-                          color: AppTheme.blackColor,
+                    Row(
+                      children: [
+                        Expanded(
+                          child: TextField(
+                            decoration: InputDecoration(
+                              border: InputBorder.none,
+                              hintText: "MM/YY",
+                              hintStyle: TextStyle(
+                                fontSize: 18.0,
+                                fontWeight: FontWeight.w300,
+                                color: AppTheme.blackColor,
+                              ),
+                              contentPadding: EdgeInsets.only(left: 10.0),
+                            ),
+                          ),
                         ),
-                        contentPadding: EdgeInsets.only(left: 10.0),
-                      ),
+                        
+                        VerticalDivider(
+                          color: AppTheme.blackColor,
+                          width: 2,
+                        ), // Add a vertical divider between MM/YY and CVC
+                        Expanded(
+                          child: TextField(
+                            decoration: InputDecoration(
+                              border: InputBorder.none,
+                              hintText: "CVC",
+                              hintStyle: TextStyle(
+                                fontSize: 18.0,
+                                fontWeight: FontWeight.w300,
+                                color: AppTheme.blackColor,
+                              ),
+                              contentPadding: EdgeInsets.only(left: 10.0),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
