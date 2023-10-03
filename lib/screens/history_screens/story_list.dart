@@ -1,35 +1,17 @@
 import 'package:ai_story_generator/core/app_export.dart';
-import 'package:ai_story_generator/screens/ai_stories/individual_story.dart';
+import 'package:ai_story_generator/screens/history_screens/individual_story.dart';
 import 'package:flutter/material.dart';
 import 'package:iconamoon/iconamoon.dart';
 
-class CreativeWritingList extends StatefulWidget {
-  const CreativeWritingList({super.key});
+class StoryList extends StatefulWidget {
+  const StoryList({super.key});
 
   @override
-  State<CreativeWritingList> createState() => _CreativeWritingListState();
+  State<StoryList> createState() => _StoryListState();
 }
 
-class _CreativeWritingListState extends State<CreativeWritingList> {
+class _StoryListState extends State<StoryList> {
   final _controller = ScrollController();
-  // var indice;
-  // final _itemListener = ItemPositionsListener.create();
-  // int selectedIndex = 0;
-
-  // @override
-  // void initState() {
-  //   _itemListener.itemPositions.addListener(() {
-  //     indice = _itemListener.itemPositions.value.where((item) {
-  //       final isTopVisible = item.itemLeadingEdge >= 0;
-  //       final isBottomVisible = item.itemTrailingEdge <= 1;
-
-  //       return isTopVisible && isBottomVisible;
-  //     }).map((item) => item.index);
-  //     print(indice);
-  //   });
-  //   // TODO: implement initState
-  //   super.initState();
-  // }
 
   @override
   void dispose() {
@@ -45,8 +27,7 @@ class _CreativeWritingListState extends State<CreativeWritingList> {
       width: getProportionateScreenWidth(390),
       child: ListView.builder(
           controller: _controller,
-          itemCount: creativeList.length,
-          // itemPositionsListener: _itemListener,
+          itemCount: storyList.length,
           shrinkWrap: true,
           scrollDirection: Axis.horizontal,
           itemBuilder: (context, index) {
@@ -85,7 +66,7 @@ class _CreativeWritingListState extends State<CreativeWritingList> {
                 child: Column(
                   children: [
                     customCentreText(
-                        inputText: creativeList[index].title,
+                        inputText: storyList[index].title,
                         fontSize: 22,
                         weight: FontWeight.w500,
                         colorName: AppTheme.blackColor),
@@ -110,28 +91,28 @@ class _CreativeWritingListState extends State<CreativeWritingList> {
   }
 }
 
-class CreativeModel {
+class TabModel {
   final String title;
 
-  CreativeModel({
+  TabModel({
     required this.title,
   });
 }
 
-List<CreativeModel> creativeList = [
-  CreativeModel(
-    title: 'The Child',
+List<TabModel> storyList = [
+  TabModel(
+    title: 'The River',
   ),
-  CreativeModel(
-    title: 'The Man',
+  TabModel(
+    title: 'The Ocean',
   ),
-  CreativeModel(
+  TabModel(
     title: 'The City',
   ),
-  CreativeModel(
+  TabModel(
     title: 'The Nile',
   ),
-  CreativeModel(
-    title: 'The Girl',
+  TabModel(
+    title: 'The Bush',
   ),
 ];

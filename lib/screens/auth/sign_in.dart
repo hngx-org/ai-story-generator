@@ -2,12 +2,11 @@ import 'package:ai_story_generator/controller/sign_In_controller.dart';
 import 'package:ai_story_generator/core/app_export.dart';
 import 'package:ai_story_generator/screens/auth/reset_password.dart';
 import 'package:ai_story_generator/screens/auth/sign_up.dart';
-import 'package:ai_story_generator/screens/payments/plan_categories.dart';
 import 'package:ai_story_generator/widgets/auth_textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
-// import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
@@ -33,13 +32,16 @@ class _SignInScreenState extends State<SignInScreen> {
                   height: 20,
                 ),
                 Center(
-                  child: Image.asset(ImageConstant.smallAppLogo),
+                  child: Image.asset(
+                    "assets/images/logo.png",
+                    scale: 4,
+                  ),
                 ),
                 const SizedBox(
                   height: 20,
                 ),
                 Center(
-                  child: Image.asset(ImageConstant.editIcon),
+                  child: SvgPicture.asset(ImageSvgConstant.editIcon),
                 ),
                 const SizedBox(
                   height: 10,
@@ -118,9 +120,9 @@ class _SignInScreenState extends State<SignInScreen> {
                 AppButton(
                   buttonText: "Sign In",
                   onPressed: () {
-                    Get.off(PlansScreen());
+                    // Get.off(const PlansScreen());
                     // Get.off(const ChangePassword());
-                    // _signInController.validation();
+                    _signInController.validation();
                   },
                 ),
                 const SizedBox(

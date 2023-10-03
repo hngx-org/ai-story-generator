@@ -6,7 +6,7 @@ import 'package:hng_authentication/authentication.dart';
 import '../core/extensions/extensions.dart';
 import '../core/utils/progress_dialog_utils.dart';
 import '../main.dart';
-import '../screens/ai_stories/dashboard.dart';
+import '../screens/history_screens/dashboard.dart';
 
 class SignInController extends GetxController {
   final TextEditingController emailController = TextEditingController();
@@ -19,7 +19,7 @@ class SignInController extends GetxController {
     if (emailController.text.trim().isEmpty ||
         passwordController.text.trim().isEmpty) {
       errorSnackbar('Email or Password can not be empty');
-    }else {
+    } else {
       signIn();
     }
   }
@@ -36,22 +36,31 @@ class SignInController extends GetxController {
     if (result != null) {
       // Registration failed, display an error message
 
-      if (result["error"] == "Forbbiden") {
-        errorSnackbar(result["message"]);
-      } else if (result["message"] == "User Created Succesfully") {
-        print('sign up result: >>> ${result["data"]}');
-        localStorage.write("fullname", result["data"]["name"]);
-        localStorage.write("email", result["data"]["email"]);
+      // if (result["error"] == "Forbbiden") {
+      //   errorSnackbar(result["message"]);
+      // } else if (result["message"] == "User Created Succesfully") {
+      //   print('sign up result: >>> ${result["data"]}');
+
+        print("--------- ${result.name}");
+        print("--------- ${result.email}");
+        print("--------- ${result.cookie}");
+        print("--------- ${result.id}");
+        // print("--------- ${result.headers['cookies']}");
+
+        localStorage.write('fullName', result.name);
+        localStorage.write('email', result.email);
+        localStorage.write('cookie', result.cookie);
+        localStorage.write('id', result.id);
         localStorage.write("isLoggedIn", true);
         Get.off(const DashBoardScreen());
         successSnackbar('SignUp successful');
-      } else {
-        errorSnackbar("Something went wrong, please try again");
-      }
+      // } else {
+      //   errorSnackbar("Something went wrong, please try again");
+      // }
     } else {
       print('errror:   eeeeeee');
       ProgressDialogUtils.hideProgressDialog();
-      errorSnackbar('SignUp ERROR');
+      errorSnackbar('Sign In ERROR');
     }
   }
 }

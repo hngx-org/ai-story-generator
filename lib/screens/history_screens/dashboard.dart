@@ -1,8 +1,8 @@
 import 'package:ai_story_generator/core/app_export.dart';
-import 'package:ai_story_generator/screens/ai_stories/your_story.dart';
-import 'package:ai_story_generator/screens/history/history_with_all_category.dart';
+import 'package:ai_story_generator/screens/history_screens/your_story.dart';
 import 'package:ai_story_generator/screens/profile.dart';
 import 'package:flutter/material.dart';
+import '../ai_screens/meet_with_ai_screen.dart';
 
 class DashBoardScreen extends StatefulWidget {
   const DashBoardScreen({super.key});
@@ -23,74 +23,23 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
   Widget build(BuildContext context) {
     SizeConfig.init(context);
     return Scaffold(
+        backgroundColor: AppTheme.whiteColor,
         body: SafeArea(
             child: Stack(
-      children: [
-        pages[currentPage],
-        Positioned(
-            left: 0, right: 0, bottom: 0, child: buildBottomNav(currentPage)),
-      ],
-    ))
-
-        //      Column(
-        //   children: [
-
-        //     Expanded(flex: 15, child: pages[currentPage]),
-        //     Expanded(
-        //       flex: 2,
-        //       child: Align(
-        //         alignment: FractionalOffset.bottomCenter,
-        //         child: buildBottomNav(),
-        //       ),
-        //     )
-        //   ],
-        // )),
-
-        // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        // floatingActionButton: FloatingActionButton(
-        //     backgroundColor: AppTheme.redColor,
-        //     child: Icon(
-        //       Icons.add_rounded,
-        //       color: AppTheme.whiteColor,
-        //       size: getProportionateScreenWidth(30),
-        //     ),
-        //     onPressed: () {
-        //       setState(() {
-        //         currentPage = 2;
-        //       });
-        //     }),
-        // bottomNavigationBar: BottomNavigationBar(
-        //   backgroundColor: AppTheme.whiteColor,
-        //   currentIndex: currentPage,
-        //   onTap: (index) {
-        //     setState(() {
-        //       currentPage = index;
-        //     });
-        //   },
-        //   type: BottomNavigationBarType.fixed,
-        //   items: [
-        //     _buildBottomNavigationBarItem(
-        //       icon: Image(image: AssetImage(ImageConstant.books)),
-        //       title: 'Your Story',
-        //       activeIcon: Image(image: AssetImage(ImageConstant.books)),
-        //     ),
-        //     _buildBottomNavigationBarItem(
-        //         icon: Icon(
-        //           Icons.person_2_rounded,
-        //           size: getProportionateScreenWidth(40),
-        //         ),
-        //         title: 'Profile',
-        //         activeIcon: Icon(
-        //           Icons.person,
-        //           size: getProportionateScreenWidth(28),
-        //         )),
-        //   ],
-        // ),
-        );
+          children: [
+            pages[currentPage],
+            Positioned(
+                left: 0,
+                right: 0,
+                bottom: 0,
+                child: buildBottomNav(currentPage)),
+          ],
+        )));
   }
 
   Container buildBottomNav(int index) {
     return Container(
+      color: AppTheme.whiteColor,
       padding: EdgeInsets.symmetric(
           horizontal: getProportionateScreenWidth(24),
           vertical: getProportionateScreenHeight(2)),
@@ -99,7 +48,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
         children: [
           SizedBox(
             width: getProportionateScreenWidth(85),
-            height: getProportionateScreenHeight(80),
+            height: getProportionateScreenHeight(82),
             child: GestureDetector(
               onTap: () {
                 setState(() {
@@ -109,9 +58,10 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
               child: Column(
                 children: [
                   SizedBox(
-                      height: getProportionateScreenHeight(49),
-                      width: getProportionateScreenWidth(73),
-                      child: Image(image: AssetImage(ImageConstant.books))),
+                    height: getProportionateScreenHeight(49),
+                    width: getProportionateScreenWidth(73),
+                    child: Image.asset(ImageConstant.books),
+                  ),
                   customCentreText(
                       inputText: 'Your Stories',
                       fontSize: 16,
@@ -128,21 +78,21 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
               ),
             ),
           ),
-          Stack(
-            clipBehavior: Clip.none,
-            children: [
-              SizedBox(
-                height: getProportionateScreenHeight(75),
-                width: getProportionateScreenWidth(75),
-              ),
-              Positioned(
-                bottom: getProportionateScreenHeight(40),
-                child: InkWell(
-                  onTap: () {
-                    setState(() {
-                      currentPage = 1;
-                    });
-                  },
+          GestureDetector(
+            onTap: () {
+              setState(() {
+                currentPage = 1;
+              });
+            },
+            child: Stack(
+              clipBehavior: Clip.none,
+              children: [
+                SizedBox(
+                  height: getProportionateScreenHeight(75),
+                  width: getProportionateScreenWidth(75),
+                ),
+                Positioned(
+                  bottom: getProportionateScreenHeight(40),
                   child: Container(
                     height: getProportionateScreenHeight(75),
                     width: getProportionateScreenWidth(75),
@@ -155,26 +105,30 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                       size: getProportionateScreenWidth(30),
                     ),
                   ),
-                ),
-              )
-            ],
+                )
+              ],
+            ),
           ),
           SizedBox(
             width: getProportionateScreenWidth(85),
-            height: getProportionateScreenHeight(80),
+            height: getProportionateScreenHeight(82),
             child: InkWell(
               onTap: () {
                 setState(() {
                   currentPage = 2;
+                  //  localStorage.write("isLoggedIn", false);
                 });
               },
               child: Column(
                 children: [
                   SizedBox(
-                      height: getProportionateScreenHeight(49),
-                      width: getProportionateScreenWidth(73),
-                      child: Image(
-                          image: AssetImage(ImageConstant.profileAvatar))),
+                    height: getProportionateScreenHeight(49),
+                    width: getProportionateScreenWidth(73),
+                    child: Image.asset(
+                      ImageConstant.profileAvatar,
+                      scale: 4,
+                    ),
+                  ),
                   customCentreText(
                       inputText: 'Profile',
                       fontSize: 16,
