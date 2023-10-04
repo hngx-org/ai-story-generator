@@ -59,13 +59,13 @@ dependencies:
   flutter_svg: ^2.0.7
   hng_authentication: ^0.1.4
   share_plus: ^4.5.3
-  
   hngx_openai:
     git:
       url: https://github.com/hngx-org/openai-package.git
       ref: main
   carousel_slider: ^4.2.1
   
+
  
 
 dev_dependencies:
