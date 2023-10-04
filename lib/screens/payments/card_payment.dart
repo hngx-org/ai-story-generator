@@ -1,6 +1,9 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import '../../controller/card_payment_controller.dart';
 import '../../core/app_export.dart';
 
 class CardPaymentScreen extends StatefulWidget {
@@ -60,7 +63,7 @@ class _CardPaymentScreenState extends State<CardPaymentScreen> {
               // create input field with a border box container
               Container(
                 height: 120.0,
-                margin: const EdgeInsets.only(top: 3.0),
+                margin: const EdgeInsets.only(top: 10.0),
                 decoration: BoxDecoration(
                   border: Border.all(
                     color: AppTheme.blackColor,
@@ -72,9 +75,10 @@ class _CardPaymentScreenState extends State<CardPaymentScreen> {
                   children: [
                     TextField(
                       keyboardType: TextInputType.number,
+                      onChanged: cardDetailsController
+                          .updateCardNumber, // Update card number and validate
                       decoration: InputDecoration(
                         border: InputBorder.none,
-                        
                         hintText: "Card Number",
                         hintStyle: const TextStyle(
                           fontSize: 18.0,
@@ -91,6 +95,9 @@ class _CardPaymentScreenState extends State<CardPaymentScreen> {
                             size: 30,
                           ),
                         ),
+                        errorText: cardDetailsController.isCardNumberValid.value
+                            ? null
+                            : "Invalid Card Number",
                       ),
                     ),
                     const Divider(),
@@ -99,6 +106,8 @@ class _CardPaymentScreenState extends State<CardPaymentScreen> {
                         Expanded(
                           child: TextField(
                             keyboardType: TextInputType.number,
+                            onChanged: cardDetailsController
+                                .updateCardExpiry, // Update expiry date and validate
                             decoration: InputDecoration(
                               border: InputBorder.none,
                               hintText: "MM/YY",
@@ -108,6 +117,10 @@ class _CardPaymentScreenState extends State<CardPaymentScreen> {
                                 color: AppTheme.blackColor,
                               ),
                               contentPadding: EdgeInsets.only(left: 10.0),
+                              errorText:
+                                  cardDetailsController.isExpiryDateValid.value
+                                      ? null
+                                      : "Invalid Expiry Date",
                             ),
                           ),
                         ),
@@ -117,9 +130,10 @@ class _CardPaymentScreenState extends State<CardPaymentScreen> {
                           color: Colors.black26,
                         ),
                         Expanded(
-                          
                           child: TextField(
                             keyboardType: TextInputType.number,
+                            onChanged: cardDetailsController
+                                .updateCardCVC, // Update CVC and validate
                             decoration: InputDecoration(
                               border: InputBorder.none,
                               hintText: "CVC",
@@ -129,6 +143,9 @@ class _CardPaymentScreenState extends State<CardPaymentScreen> {
                                 color: AppTheme.blackColor,
                               ),
                               contentPadding: EdgeInsets.only(left: 10.0),
+                              errorText: cardDetailsController.isCVCValid.value
+                                  ? null
+                                  : "Invalid CVC",
                             ),
                           ),
                         ),
@@ -137,6 +154,7 @@ class _CardPaymentScreenState extends State<CardPaymentScreen> {
                   ],
                 ),
               ),
+
               const SizedBox(
                 height: 20,
               ),
