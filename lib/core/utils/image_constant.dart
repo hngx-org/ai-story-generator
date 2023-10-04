@@ -31,4 +31,5 @@ class ImageConstant {
   static const String editIcon = 'assets/images/edit-icon.png';
   static const String profileAvatar = 'assets/images/profile_avatar.png';
   static const String startChat = 'assets/images/start_chat.png';
+  static const String notebook = 'assets/images/notebook.png';
 }

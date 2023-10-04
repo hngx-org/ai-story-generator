@@ -27,77 +27,81 @@ class _YourStoryScreenState extends State<YourStoryScreen> {
   Widget build(BuildContext context) {
     SizeConfig.init(context);
     return Scaffold(
-        backgroundColor: AppTheme.whiteColor,
-        appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          automaticallyImplyLeading: false,
-          centerTitle: false,
-          title: customNormalText(
-              inputText: title[selectedIndex],
-              fontSize: 32,
-              weight: FontWeight.w800,
-              colorName: AppTheme.blackColor),
-        ),
-        body: Padding(
-          padding: EdgeInsets.only(top: getProportionateScreenHeight(37)),
-          child: Column(
-            children: [
-              Padding(
-                padding: EdgeInsets.symmetric(
-                    horizontal: getProportionateScreenWidth(24)),
-                child: SizedBox(
-                  height: getProportionateScreenHeight(50),
-                  width: getProportionateScreenWidth(346),
-                  child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: tabs.length,
-                      itemBuilder: (context, index) {
-                        return GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              selectedIndex = index;
-                            });
-                          },
-                          child: AnimatedContainer(
-                            duration: Duration(microseconds: 300),
-                            margin: EdgeInsets.symmetric(
-                                horizontal: getProportionateScreenWidth(8)),
-                            padding: EdgeInsets.symmetric(
-                                horizontal: index == 1
-                                    ? getProportionateScreenWidth(10)
-                                    : getProportionateScreenWidth(15)),
-                            height: getProportionateScreenHeight(30),
-                            // width:index == 1? getProportionateScreenWidth(126) : getProportionateScreenWidth(40),
-                            decoration: BoxDecoration(
-                                color: selectedIndex == index
-                                    ? AppTheme.primaryColor
-                                    : AppTheme.whiteColor,
-                                borderRadius: BorderRadius.circular(10),
-                                border: Border.all(
-                                    color: selectedIndex == index
-                                        ? AppTheme.primaryColor
-                                        : AppTheme.black50Color)),
-                            child: Center(
-                              child: customNormalText(
-                                  inputText: tabs[index].title,
-                                  fontSize: 16,
-                                  weight: FontWeight.w500,
-                                  colorName: selectedIndex == index
-                                      ? AppTheme.whiteColor
-                                      : AppTheme.blackColor),
-                            ),
+      backgroundColor: AppTheme.whiteColor,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        automaticallyImplyLeading: false,
+        centerTitle: false,
+        title: customNormalText(
+            inputText: title[selectedIndex],
+            fontSize: 32,
+            weight: FontWeight.w800,
+            colorName: AppTheme.blackColor),
+      ),
+      body: Padding(
+        padding: EdgeInsets.only(top: getProportionateScreenHeight(37)),
+        child: Column(
+          children: [
+            Padding(
+              padding: EdgeInsets.symmetric(
+                  horizontal: getProportionateScreenWidth(24)),
+              child: SizedBox(
+                height: getProportionateScreenHeight(50),
+                width: getProportionateScreenWidth(346),
+                child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: tabs.length,
+                    itemBuilder: (context, index) {
+                      return GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            selectedIndex = index;
+                          });
+                        },
+                        child: AnimatedContainer(
+                          duration: Duration(microseconds: 300),
+                          margin: EdgeInsets.symmetric(
+                              horizontal: getProportionateScreenWidth(8)),
+                          padding: EdgeInsets.symmetric(
+                              horizontal: index == 1
+                                  ? getProportionateScreenWidth(10)
+                                  : getProportionateScreenWidth(15)),
+                          height: getProportionateScreenHeight(30),
+                          // width:index == 1? getProportionateScreenWidth(126) : getProportionateScreenWidth(40),
+                          decoration: BoxDecoration(
+                              color: selectedIndex == index
+                                  ? AppTheme.primaryColor
+                                  : AppTheme.whiteColor,
+                              borderRadius: BorderRadius.circular(10),
+                              border: Border.all(
+                                  color: selectedIndex == index
+                                      ? AppTheme.primaryColor
+                                      : AppTheme.black50Color)),
+                          child: Center(
+                            child: customNormalText(
+                                inputText: tabs[index].title,
+                                fontSize: 16,
+                                weight: FontWeight.w500,
+                                colorName: selectedIndex == index
+                                    ? AppTheme.whiteColor
+                                    : AppTheme.blackColor),
                           ),
-                        );
-                      }),
-                ),
+                        ),
+                      );
+                    }),
               ),
-              SizedBox(
-                height: getProportionateScreenHeight(100),
-              ),
-              homePages[selectedIndex]
-            ],
-          ),
-        ));
+            ),
+            SizedBox(
+              height: getProportionateScreenHeight(100),
+            ),
+            Expanded(child: homePages[selectedIndex]),
+            SizedBox(
+              height: getProportionateScreenHeight(150),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
 

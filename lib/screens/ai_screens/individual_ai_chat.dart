@@ -1,4 +1,5 @@
 import 'package:ai_story_generator/core/app_export.dart';
+import 'package:ai_story_generator/main.dart';
 import 'package:ai_story_generator/screens/ai_screens/ai_chat_controller.dart';
 import 'package:ai_story_generator/screens/ai_screens/chat_textfield.dart';
 import 'package:ai_story_generator/screens/ai_screens/user_chat_container.dart';
@@ -105,6 +106,21 @@ class _IndividualAiChatScreenState extends State<IndividualAiChatScreen> {
                             inputText:
                                 _aiController.aiInput[index]["ai"].toString(),
                             onSaved: () {
+                              _aiController.storyTitleController.clear();
+                              _aiController.textInputController.clear();
+                              localStorage.write("Stories", {
+                                "Title": _aiController.storyTitleController.text
+                                    .trim(),
+                                "Story": _aiController.aiInput[index]["ai"]
+                                    .toString()
+                              });
+                              // _aiController.savedStories.add({
+                              //   "Title": _aiController.storyTitleController.text
+                              //       .trim(),
+                              //   "Story": _aiController.aiInput[index]["ai"]
+                              //       .toString()
+                              // });
+                              print("object  ${_aiController.savedStories[0]}");
                               Get.off(DashBoardScreen());
                             },
                             textController: _aiController.storyTitleController,

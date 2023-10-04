@@ -7,6 +7,7 @@ class AiController extends GetxController {
   final TextEditingController textInputController = TextEditingController();
   final TextEditingController storyTitleController = TextEditingController();
   List<Map<String, String>> aiInput = [];
+  List<Map<String, String>> savedStories = [];
   bool aiResponse = true;
 
   generateStories() async {
