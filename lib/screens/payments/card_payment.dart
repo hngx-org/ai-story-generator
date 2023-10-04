@@ -1,10 +1,10 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../controller/card_payment_controller.dart';
 import '../../core/app_export.dart';
+import 'package:flutter_multi_formatter/flutter_multi_formatter.dart';
 
 class CardPaymentScreen extends StatefulWidget {
   final String planPrice;
@@ -20,6 +20,7 @@ class CardPaymentScreen extends StatefulWidget {
 
 class _CardPaymentScreenState extends State<CardPaymentScreen> {
   String selectedCountry = 'Nigeria'; // Default country
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,18 +39,18 @@ class _CardPaymentScreenState extends State<CardPaymentScreen> {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(24.0),
+          padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 16.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               SizedBox(
-                height: 180,
+                height: 120,
                 width: double.infinity,
                 child: SvgPicture.asset(
                   ImageSvgConstant.cardPaymentImage,
                 ),
               ),
-              const SizedBox(height: 30.0),
+              const SizedBox(height: 20.0),
               Text(
                 "Card Information",
                 style: GoogleFonts.abhayaLibre(
@@ -60,7 +61,7 @@ class _CardPaymentScreenState extends State<CardPaymentScreen> {
                   ),
                 ),
               ),
-              // create input field with a border box container
+              // Create input field with a border box container
               Container(
                 height: 120.0,
                 margin: const EdgeInsets.only(top: 10.0),
@@ -75,8 +76,11 @@ class _CardPaymentScreenState extends State<CardPaymentScreen> {
                   children: [
                     TextField(
                       keyboardType: TextInputType.number,
-                      onChanged: cardDetailsController
-                          .updateCardNumber, // Update card number and validate
+                      onChanged: cardDetailsController.updateCardNumber,
+                      // Update card number and validate
+                      inputFormatters: [
+                        CreditCardNumberInputFormatter(),
+                      ], // Accept only numbers
                       decoration: InputDecoration(
                         border: InputBorder.none,
                         hintText: "Card Number",
@@ -106,8 +110,11 @@ class _CardPaymentScreenState extends State<CardPaymentScreen> {
                         Expanded(
                           child: TextField(
                             keyboardType: TextInputType.number,
-                            onChanged: cardDetailsController
-                                .updateCardExpiry, // Update expiry date and validate
+                            onChanged: cardDetailsController.updateCardExpiry,
+                            // Update expiry date and validate
+                            inputFormatters: [
+                              CreditCardExpirationDateFormatter(),
+                            ], // Accept only numbers
                             decoration: InputDecoration(
                               border: InputBorder.none,
                               hintText: "MM/YY",
@@ -132,8 +139,11 @@ class _CardPaymentScreenState extends State<CardPaymentScreen> {
                         Expanded(
                           child: TextField(
                             keyboardType: TextInputType.number,
-                            onChanged: cardDetailsController
-                                .updateCardCVC, // Update CVC and validate
+                            onChanged: cardDetailsController.updateCardCVC,
+                            // Update CVC and validate
+                            inputFormatters: [
+                            CreditCardCvcInputFormatter(),
+                            ], // Accept only numbers
                             decoration: InputDecoration(
                               border: InputBorder.none,
                               hintText: "CVC",
@@ -169,7 +179,7 @@ class _CardPaymentScreenState extends State<CardPaymentScreen> {
                 ),
               ),
               const SizedBox(height: 5.0),
-              // input field
+              // Input field
               Container(
                 height: 55,
                 width: double.infinity,
