@@ -20,18 +20,24 @@ class CardDetailsController extends GetxController {
     isCardNumberValid.value = validateCardNumber(cleanNumber);
   }
 
-
   void updateCardExpiry(String expiry) {
-    cardExpiry.value = expiry;
-    isExpiryDateValid.value = validateExpiryDate(expiry);
+    // Remove any non-digit characters
+    final cleanExpiry = expiry.replaceAll(RegExp(r'\D'), '');
+
+    // Format the expiry date as MM/YY
+    final formattedExpiry = formatExpiryDate(cleanExpiry);
+
+    cardExpiry.value = formattedExpiry;
+    isExpiryDateValid.value = validateExpiryDate(cleanExpiry);
   }
 
   void updateCardCVC(String cvc) {
-    cardCVC.value = cvc;
-    isCVCValid.value = validateCVC(cvc);
-  }
+    // Remove any non-digit characters
+    final cleanCVC = cvc.replaceAll(RegExp(r'\D'), '');
 
-  // Implement your card validation logic here
+    cardCVC.value = cleanCVC;
+    isCVCValid.value = validateCVC(cleanCVC);
+  }
 
   bool validateCardNumber(String number) {
     // Implement card number validation logic
@@ -40,7 +46,7 @@ class CardDetailsController extends GetxController {
 
   bool validateExpiryDate(String expiry) {
     // Implement expiry date validation logic
-    return expiry.length == 5; // Example: MM/YY format
+    return expiry.length == 4; // Example: MMYY format
   }
 
   bool validateCVC(String cvc) {
@@ -49,10 +55,6 @@ class CardDetailsController extends GetxController {
   }
 
   String formatCardNumber(String cardNumber) {
-    if (cardNumber.length <= 4) {
-      return cardNumber;
-    }
-
     final formattedNumber = StringBuffer();
     for (int i = 0; i < cardNumber.length; i++) {
       if (i % 4 == 0 && i != 0) {
@@ -62,7 +64,13 @@ class CardDetailsController extends GetxController {
     }
     return formattedNumber.toString();
   }
+
+  String formatExpiryDate(String expiry) {
+    if (expiry.length <= 2) {
+      return expiry;
+    }
+    return "${expiry.substring(0, 2)}/${expiry.substring(2)}"; // Format as MM/YY
+  }
 }
 
 final cardDetailsController = CardDetailsController();
-
