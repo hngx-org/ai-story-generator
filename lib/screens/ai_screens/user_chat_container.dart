@@ -28,7 +28,7 @@ class UserChatContainer extends StatelessWidget {
             borderRadius: BorderRadius.circular(10),
           ),
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
             child: customNormalText(
               inputText: inputText,
               fontSize: 18,
