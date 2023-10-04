@@ -4,8 +4,8 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../core/app_export.dart';
 
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:in_app_payment/in_app_payment.dart';
 
-import 'card_payment.dart';
 
 class PlansScreen extends StatefulWidget {
   const PlansScreen({super.key});
@@ -16,6 +16,7 @@ class PlansScreen extends StatefulWidget {
 
 class _PlansScreenState extends State<PlansScreen> {
   String selectedPlan = "Monthly Plan";
+  final pay = HNGPay();
   @override
   void initState() {
     selectedPlan = "Monthly Plan";
@@ -144,18 +145,9 @@ class _PlansScreenState extends State<PlansScreen> {
               SizedBox(
                 width: getProportionateScreenWidth(342),
                 height: getProportionateScreenHeight(60),
-                child: AppButton(
-                  buttonText: 'Purchase',
-                  onPressed: () {
-                    Get.to(
-                      CardPaymentScreen(
-                        planPrice: selectedPlan == "Monthly Plan"
+                child:pay.googlePay(amountToPay: selectedPlan == "Monthly Plan"
                             ? "\$4.99"
-                            : "\$49.99",
-                      ),
-                    );
-                  },
-                ),
+                            : "\$49.99",)
               ),
             ],
           ),

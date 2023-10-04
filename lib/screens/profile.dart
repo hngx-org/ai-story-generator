@@ -112,8 +112,6 @@ class UserProfileScreen extends StatelessWidget {
                               _profileController.logOut();
                             },
                           );
-                          print("got here");
-                          //
                         },
                         child: const Padding(
                           padding: EdgeInsets.only(right: 20),
@@ -133,7 +131,10 @@ class UserProfileScreen extends StatelessWidget {
                     onTap: () {
                       Get.to(PlansScreen());
                     },
-                    child: customNormalText(
+                    child:
+                    
+                    
+                     customNormalText(
                       inputText: "Get a plan",
                       fontSize: 20,
                       weight: FontWeight.w800,
