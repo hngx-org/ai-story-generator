@@ -62,7 +62,6 @@ class IndividualStoryScreen extends StatelessWidget {
     );
   }
 
-  // _onShare method:
   shareMethod(
     context,
   ) async {

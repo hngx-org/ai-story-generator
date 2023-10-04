@@ -52,17 +52,13 @@ dependencies:
   google_fonts: ^6.1.0
   get_storage: ^2.1.1
   flutter_screenutil: ^5.9.0
-  http: ^1.1.0
-  intl: ^0.18.1
   flutter_credit_card: ^3.0.7
   flutter_native_splash: ^2.3.2
-  iconamoon: ^0.0.3
   scrollable_positioned_list: ^0.3.8
   flutter_launcher_icons: ^0.13.1
-  # hng_authentication: ^0.0.3
   flutter_svg: ^2.0.7
   hng_authentication: ^0.1.4
-  share_plus: ^7.1.0
+  share_plus: ^4.5.3
   
   hngx_openai:
     git:
