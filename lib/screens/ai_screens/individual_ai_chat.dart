@@ -1,11 +1,10 @@
+import 'package:ai_story_generator/controller/history_controller.dart';
 import 'package:ai_story_generator/core/app_export.dart';
-import 'package:ai_story_generator/main.dart';
 import 'package:ai_story_generator/screens/ai_screens/ai_chat_controller.dart';
 import 'package:ai_story_generator/screens/ai_screens/chat_textfield.dart';
 import 'package:ai_story_generator/screens/ai_screens/user_chat_container.dart';
 import 'package:ai_story_generator/screens/history_screens/dashboard.dart';
 import 'package:flutter/material.dart';
-
 import '../../controller/ai_controller.dart';
 
 class IndividualAiChatScreen extends StatefulWidget {
@@ -37,6 +36,7 @@ class _IndividualAiChatScreenState extends State<IndividualAiChatScreen> {
   @override
   Widget build(BuildContext context) {
     final _aiController = Get.put(AiController());
+    final _historyController = Get.put(HistoryController());
     SizeConfig.init(context);
     return Scaffold(
       appBar: AppBar(
@@ -106,22 +106,17 @@ class _IndividualAiChatScreenState extends State<IndividualAiChatScreen> {
                             inputText:
                                 _aiController.aiInput[index]["ai"].toString(),
                             onSaved: () {
+                              saveOptions(
+                                widget.screenType,
+                                _historyController,
+                                _aiController,
+                                index,
+                              );
+                              print(
+                                  "object  ${_historyController.storiesList[0]}");
+                              Get.off(DashBoardScreen());
                               _aiController.storyTitleController.clear();
                               _aiController.textInputController.clear();
-                              localStorage.write("Stories", {
-                                "Title": _aiController.storyTitleController.text
-                                    .trim(),
-                                "Story": _aiController.aiInput[index]["ai"]
-                                    .toString()
-                              });
-                              // _aiController.savedStories.add({
-                              //   "Title": _aiController.storyTitleController.text
-                              //       .trim(),
-                              //   "Story": _aiController.aiInput[index]["ai"]
-                              //       .toString()
-                              // });
-                              print("object  ${_aiController.savedStories[0]}");
-                              Get.off(DashBoardScreen());
                             },
                             textController: _aiController.storyTitleController,
                           ),
@@ -167,5 +162,28 @@ class _IndividualAiChatScreenState extends State<IndividualAiChatScreen> {
         ],
       ),
     );
+  }
+
+  saveOptions(String screenType, HistoryController historyController,
+      AiController aiController, int index) {
+    if (screenType == "Stories") {
+      print("stories");
+      historyController.addstoriesItem({
+        "Title": aiController.storyTitleController.text.trim(),
+        "Story": aiController.aiInput[index]["ai"].toString()
+      });
+    } else if (screenType == "Poem") {
+      print("Poems");
+      historyController.addPoemsItem({
+        "Title": aiController.storyTitleController.text.trim(),
+        "Story": aiController.aiInput[index]["ai"].toString()
+      });
+    } else if (screenType == "Creative Writing") {
+      print("creative writing");
+      historyController.addCreativeWritingsItem({
+        "Title": aiController.storyTitleController.text.trim(),
+        "Story": aiController.aiInput[index]["ai"].toString()
+      });
+    }
   }
 }

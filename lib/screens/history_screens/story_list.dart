@@ -1,10 +1,10 @@
+import 'package:ai_story_generator/controller/history_controller.dart';
 import 'package:ai_story_generator/core/app_export.dart';
 import 'package:ai_story_generator/main.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:iconamoon/iconamoon.dart';
 
-import '../../controller/ai_controller.dart';
+import 'individual_story.dart';
 
 class StoryList extends StatefulWidget {
   const StoryList({super.key});
@@ -14,20 +14,20 @@ class StoryList extends StatefulWidget {
 }
 
 class _StoryListState extends State<StoryList> {
-  String? stories;
+  List<dynamic>? stories;
   @override
   void initState() {
     // TODO: implement initState
-    stories = localStorage.read("Stories");
+    stories = localStorage.read("storiesList");
     print("Stories  $stories");
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    final _aiController = Get.put(AiController());
-    print("------- ${_aiController.savedStories.length}");
-    return _aiController.savedStories.isEmpty
+    final _historyController = Get.put(HistoryController());
+    print("------- ${_historyController.storiesList.length}");
+    return _historyController.storiesList.isEmpty
         ? Center(
             child: Image.asset(
               ImageConstant.notebook,
@@ -41,14 +41,13 @@ class _StoryListState extends State<StoryList> {
               aspectRatio: 1,
               enableInfiniteScroll: false,
             ),
-            items: _aiController.savedStories
+            items: _historyController.storiesList
                 .map((mapString) => GestureDetector(
                       onTap: () {
-                        print("------- ${_aiController.savedStories.length}");
-                        // Get.to(IndividualStoryScreen());
+                        Get.to(IndividualStoryScreen(title: mapString["Title"].toString(), content: mapString["Story"].toString(),));
                       },
                       child: Container(
-                        padding: const EdgeInsets.fromLTRB(20, 50, 20, 30),
+                        padding: const EdgeInsets.fromLTRB(20, 30, 20, 20),
                         width: 250,
                         margin: EdgeInsets.symmetric(
                           horizontal: getProportionateScreenWidth(11),
@@ -61,20 +60,14 @@ class _StoryListState extends State<StoryList> {
                           borderRadius: BorderRadius.circular(20),
                         ),
                         child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             customCentreText(
                                 inputText: mapString["Title"].toString(),
                                 fontSize: 22,
                                 weight: FontWeight.w500,
                                 colorName: AppTheme.blackColor),
-                            SizedBox(
-                              height: getProportionateScreenHeight(42),
-                            ),
-                            Icon(
-                              IconaMoon.edit,
-                              size: getProportionateScreenWidth(54),
-                              color: AppTheme.iconColor,
-                            )
+                            Image.asset(ImageConstant.storyImage)
                           ],
                         ),
                       ),

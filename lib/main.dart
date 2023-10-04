@@ -13,6 +13,7 @@ AppTheme appTheme = AppTheme();
 GetStorage localStorage = GetStorage();
 void main() async {
   await GetStorage.init();
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(
     DevicePreview(
       enabled: true,

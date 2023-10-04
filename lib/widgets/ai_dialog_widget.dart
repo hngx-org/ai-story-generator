@@ -1,5 +1,6 @@
 import 'package:ai_story_generator/core/app_export.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 showAiDialog(BuildContext context, Function() saveOnTap,
     TextEditingController textController) {
@@ -44,6 +45,9 @@ showAiDialog(BuildContext context, Function() saveOnTap,
                 width: double.infinity,
                 child: TextField(
                   controller: textController,
+                  inputFormatters: [
+                    LengthLimitingTextInputFormatter(25), // Exclude numbers from counting
+                  ],
                   keyboardType: TextInputType.text,
                   textCapitalization: TextCapitalization.sentences,
                   decoration: InputDecoration(
@@ -59,7 +63,16 @@ showAiDialog(BuildContext context, Function() saveOnTap,
                     ),
                   ),
                 ),
-              )
+              ),
+              Align(
+                alignment: Alignment.centerRight,
+                child: customNormalText(
+                  inputText: "max 25 characters",
+                  fontSize: 10,
+                  weight: FontWeight.w800,
+                  colorName: AppTheme.redColor,
+                ),
+              ),
             ],
           ),
           actions: <Widget>[
