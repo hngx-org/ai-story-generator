@@ -1,53 +1,74 @@
+import 'package:ai_story_generator/controller/profile_controller.dart';
 import 'package:ai_story_generator/core/app_export.dart';
 import 'package:ai_story_generator/main.dart';
-import 'package:flutter/gestures.dart';
+import 'package:ai_story_generator/screens/payments/plan_categories.dart';
+import 'package:ai_story_generator/widgets/dialog_widget.dart';
 import 'package:flutter/material.dart';
-
-import '../controller/signUp_controller.dart';
 
 class UserProfileScreen extends StatelessWidget {
   const UserProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final _signUpController = Get.put(SignUpController());
+    final _profileController = Get.put(ProfileController());
     double wt = MediaQuery.sizeOf(context).width;
     final String fullName = localStorage.read('fullName');
     final String email = localStorage.read('email');
     SizeConfig.init(context);
     return Scaffold(
-        backgroundColor: AppTheme.whiteColor,
-        body: Stack(
-          clipBehavior: Clip.none,
-          children: [
-            Container(
-              height: getProportionateScreenHeight(421),
-              width: wt,
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                  fit: BoxFit.cover,
-                  image: AssetImage(ImageConstant.profileImage),
+      backgroundColor: AppTheme.whiteColor,
+      body: Stack(
+        clipBehavior: Clip.none,
+        children: [
+          Column(
+            children: [
+              Container(
+                height: getProportionateScreenHeight(423),
+                width: wt,
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                    fit: BoxFit.cover,
+                    image: AssetImage(ImageConstant.profileImage),
+                  ),
                 ),
               ),
-            ),
-            Positioned(
-                top: getProportionateScreenHeight(380),
-                width: wt,
+              Expanded(
                 child: Container(
-                  width: double.infinity,
-                  padding: EdgeInsets.only(
-                    top: getProportionateScreenHeight(34),
-                    left: getProportionateScreenWidth(37),
-                  ),
-                  height: getProportionateScreenHeight(458),
+                  // height: getProportionateScreenHeight(423),
+                  width: wt,
                   decoration: const BoxDecoration(
-                    color: AppTheme.whiteColor,
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(50),
-                      topRight: Radius.circular(50),
-                    ),
+                    color: AppTheme.primaryColor,
+                    // image: DecorationImage(
+                    //   fit: BoxFit.cover,
+                    //   image: AssetImage(ImageConstant.profileImage),
+                    // ),
                   ),
-                  child: Row(
+                ),
+              ),
+            ],
+          ),
+          Positioned(
+            top: getProportionateScreenHeight(380),
+            width: wt,
+            child: Container(
+              width: double.infinity,
+              padding: EdgeInsets.only(
+                top: getProportionateScreenHeight(34),
+                left: getProportionateScreenWidth(37),
+              ),
+              height: getProportionateScreenHeight(458),
+              decoration: const BoxDecoration(
+                color: AppTheme.whiteColor,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(50),
+                  topRight: Radius.circular(50),
+                ),
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Column(
@@ -80,25 +101,19 @@ class UserProfileScreen extends StatelessWidget {
                               ),
                             ],
                           ),
-                          RichText(
-                            text: TextSpan(
-                                text: 'Get a plan',
-                                style: TextStyle(color: Colors.black),
-                                children: [
-                                  new TextSpan(
-                                    text: 'Tap here.',
-                                    recognizer: TapGestureRecognizer()
-                                      ..onTap = () => print('Tap Here onTap'),
-                                  )
-                                ]),
-                          ),
                         ],
                       ),
                       const Spacer(),
                       GestureDetector(
                         onTap: () {
+                          showMyDialog(
+                            context,
+                            () {
+                              _profileController.logOut();
+                            },
+                          );
                           print("got here");
-                          _signUpController.logOut();
+                          //
                         },
                         child: const Padding(
                           padding: EdgeInsets.only(right: 20),
@@ -114,8 +129,26 @@ class UserProfileScreen extends StatelessWidget {
                       ),
                     ],
                   ),
-                ))
-          ],
-        ));
+                  GestureDetector(
+                    onTap: () {
+                      Get.to(PlansScreen());
+                    },
+                    child: customNormalText(
+                      inputText: "Get a plan",
+                      fontSize: 20,
+                      weight: FontWeight.w800,
+                      colorName: AppTheme.primaryColor,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 80,
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }

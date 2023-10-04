@@ -39,14 +39,14 @@ class _StoryListState extends State<StoryList> {
   Widget build(BuildContext context) {
     return SizedBox(
       height: getProportionateScreenHeight(300),
-      width: getProportionateScreenWidth(320),
+      width: getProportionateScreenWidth(390),
       child: PageView.builder(
           controller: _pageController,
           itemCount: storyList.length, // Change to the number of pages you want
           itemBuilder: (context, index) {
             // Calculate the scale and height transition for the current page
-            double scale = 1.0 - (_currentPage! - index).abs() * 0.2;
-            double height = 200 * scale;
+            // double scale = 1.0 - (_currentPage! - index).abs() * 0.2;
+            // double height = 200 * scale;
             return GestureDetector(
               onTap: () {
                 Get.to(IndividualStoryScreen());

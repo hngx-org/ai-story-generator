@@ -2,6 +2,7 @@ import 'package:ai_story_generator/core/app_export.dart';
 import 'package:ai_story_generator/screens/ai_screens/ai_chat_controller.dart';
 import 'package:ai_story_generator/screens/ai_screens/chat_textfield.dart';
 import 'package:ai_story_generator/screens/ai_screens/user_chat_container.dart';
+import 'package:ai_story_generator/screens/history_screens/dashboard.dart';
 import 'package:flutter/material.dart';
 
 import '../../controller/ai_controller.dart';
@@ -64,40 +65,55 @@ class _IndividualAiChatScreenState extends State<IndividualAiChatScreen> {
             icon: Icon(
               Icons.delete_outline_rounded,
               size: getProportionateScreenWidth(28),
+              color: AppTheme.redColor,
             ),
           ),
         ],
       ),
       body: Column(
         children: [
-          Expanded(
-            child: ListView.builder(
-              controller: _scrollController,
-              itemCount: _aiController.aiInput.length,
-              itemBuilder: (context, index) {
-                if (index == 0 || index % 2 == 0) {
-                  return Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: getProportionateScreenWidth(24),
+          _aiController.aiInput.isEmpty
+              ? Expanded(
+                  child: Center(
+                    child: Image.asset(
+                      ImageConstant.startChat,
+                      scale: 5,
                     ),
-                    child: UserChatContainer(
-                      inputText:
-                          _aiController.aiInput[index]["user"].toString(),
-                    ),
-                  );
-                } else {
-                  return Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: getProportionateScreenWidth(24),
-                    ),
-                    child: AiChatContainer(
-                      inputText: _aiController.aiInput[index]["ai"].toString(),
-                    ),
-                  );
-                }
-              },
-            ),
-          ),
+                  ),
+                )
+              : Expanded(
+                  child: ListView.builder(
+                    controller: _scrollController,
+                    itemCount: _aiController.aiInput.length,
+                    itemBuilder: (context, index) {
+                      if (index == 0 || index % 2 == 0) {
+                        return Padding(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: getProportionateScreenWidth(24),
+                          ),
+                          child: UserChatContainer(
+                            inputText:
+                                _aiController.aiInput[index]["user"].toString(),
+                          ),
+                        );
+                      } else {
+                        return Padding(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: getProportionateScreenWidth(24),
+                          ),
+                          child: AiChatContainer(
+                            inputText:
+                                _aiController.aiInput[index]["ai"].toString(),
+                            onSaved: () {
+                              Get.off(DashBoardScreen());
+                            },
+                            textController: _aiController.storyTitleController,
+                          ),
+                        );
+                      }
+                    },
+                  ),
+                ),
           Padding(
             padding: const EdgeInsets.all(24.0),
             child: ChatTextField(
@@ -107,22 +123,26 @@ class _IndividualAiChatScreenState extends State<IndividualAiChatScreen> {
               onTap: () async {
                 if (_aiController.textInputController.text.isNotEmpty) {
                   _dismissKeyboard(context);
+
                   setState(() {
-                    aiResponse = false;
+                    aiResponse =
+                        false; // The send Icon changes to a loading Icon
                     _aiController.aiInput
                         .add({"user": _aiController.textInputController.text});
                     _aiController.textInputController.clear();
                   });
+
+                  String response = await _aiController.generateStories();
+                  print("3333 ai res $response");
                   _moveToBottomView();
-                  await Future.delayed(Duration(seconds: 5));
+                  await Future.delayed(Duration(
+                      seconds: 5)); //Delays the following actions for 5 seconds
                   _moveToBottomView();
 
                   setState(() {
-                    aiResponse = true;
-                    _aiController.aiInput.add({
-                      "ai":
-                          "Lorem ipsum dolor sit amet consectetur. Phasellus leo felis ac ut a eu. Id tincidunt scelerisque malesuada etiam elit sodales sem amet suspendisse. Tortor vitae vulputate ipsum risus dignissim adipiscing lobortis. Porttitor volutpat dolor faucibus lobortis dis orci et et. Senectus id pulvinar odio. \n\nfermentum elementum tellus ut mauris. Fringilla pellentesque lorem neque volutpat. Eu morbi dui morbi aliquam eu consequat blandit dignissim dolor. Nullam interdum sed etiam at id varius nunc. Consectetur id vitae purus. \n\nrhoncus volutpat velit ac bibendum nisi. Id ipsum amet eu sem porta auctor vestibulum. Mauris nunc enim est lorem velit velit. Justo tristique dictum euismod id eros lorem orci mauris. Aliquet in blandit nibh commodo praesent euismod a. Dolor eleifend quam tempus quispellentesque gravida. Sagittis vulputate egestas eget aliquet odio. Amet rutrum pellentesque aliquam tempus nibh. \n\nsollicitudin odio netus ac. Aenean vulputate morbi tempus gravida. Tincidunt turpis purus rutrum amet tincidunt. Ut nunc ut suspendisse nisi ut. Tellus proin rhoncus mauris a lacus. Vel viverra aliquet imperdiet eget integer netus. Commodo dignissim ultricies tellus viverra vulputate est vive tristique. Porttitor at hendrerit adipiscing phasellus facilisis vulputate. In varius cras imperdiet pretium in tellus tempus blandit imperdiet."
-                    });
+                    aiResponse =
+                        true; // The loading Icons reverts back to the send Icon after ai response
+                    _aiController.aiInput.add({"ai": response});
                   });
                 }
               },
