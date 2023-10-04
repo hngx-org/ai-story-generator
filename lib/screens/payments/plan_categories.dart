@@ -18,7 +18,6 @@ class _PlansScreenState extends State<PlansScreen> {
   String selectedPlan = "Monthly Plan";
   @override
   void initState() {
-
     selectedPlan = "Monthly Plan";
 
     // TODO: implement initState
@@ -34,6 +33,7 @@ class _PlansScreenState extends State<PlansScreen> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         centerTitle: true,
+        automaticallyImplyLeading: false,
         title: SizedBox(
           child: Image.asset(
             "assets/images/logo.png",
@@ -97,7 +97,6 @@ class _PlansScreenState extends State<PlansScreen> {
                     setState(() {
                       selectedPlan = "Monthly Plan";
                     });
-
                   },
                 ),
               ),
@@ -111,7 +110,6 @@ class _PlansScreenState extends State<PlansScreen> {
                     setState(() {
                       selectedPlan = "Annual Plan";
                     });
-
                   },
                 ),
               ),

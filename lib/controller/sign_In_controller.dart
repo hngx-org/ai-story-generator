@@ -34,12 +34,6 @@ class SignInController extends GetxController {
     print("--------- $result");
     ProgressDialogUtils.hideProgressDialog();
     if (result != null) {
-      // Registration failed, display an error message
-
-      // if (result["error"] == "Forbbiden") {
-      //   errorSnackbar(result["message"]);
-      // } else if (result["message"] == "User Created Succesfully") {
-      //   print('sign up result: >>> ${result["data"]}');
 
         print("--------- ${result.name}");
         print("--------- ${result.email}");
@@ -54,9 +48,6 @@ class SignInController extends GetxController {
         localStorage.write("isLoggedIn", true);
         Get.off(const DashBoardScreen());
         successSnackbar('SignUp successful');
-      // } else {
-      //   errorSnackbar("Something went wrong, please try again");
-      // }
     } else {
       print('errror:   eeeeeee');
       ProgressDialogUtils.hideProgressDialog();
