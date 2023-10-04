@@ -116,7 +116,6 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
               onTap: () {
                 setState(() {
                   currentPage = 2;
-                  //  localStorage.write("isLoggedIn", false);
                 });
               },
               child: Column(
