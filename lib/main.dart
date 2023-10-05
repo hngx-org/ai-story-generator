@@ -36,12 +36,13 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
 
-      home:const  CardPaymentScreen(planPrice: '3',)
+      home:
+      // const  CardPaymentScreen(planPrice: '3',)
       
       
-      // localStorage.read("isLoggedIn") == true
-      //     ? const DashBoardScreen()
-      //     : const WelcomeScreen(),
+      localStorage.read("isLoggedIn") == true
+          ? const DashBoardScreen()
+          : const WelcomeScreen(),
 
     );
   }

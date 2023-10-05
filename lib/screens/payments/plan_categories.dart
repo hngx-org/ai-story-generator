@@ -147,13 +147,13 @@ class _PlansScreenState extends State<PlansScreen> {
                 child: AppButton(
                   buttonText: 'Purchase',
                   onPressed: () {
-                    Get.to(
-                      CardPaymentScreen(
-                        planPrice: selectedPlan == "Monthly Plan"
-                            ? "\$4.99"
-                            : "\$49.99",
-                      ),
-                    );
+                    // Get.to(
+                    //   // CardPaymentScreen(
+                    //   //   planPrice: selectedPlan == "Monthly Plan"
+                    //   //       ? "\$4.99"
+                    //   //       : "\$49.99",
+                    //   // ),
+                    // );
                   },
                 ),
               ),
