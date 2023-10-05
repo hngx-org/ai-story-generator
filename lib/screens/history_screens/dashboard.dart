@@ -23,20 +23,22 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
   Widget build(BuildContext context) {
     SizeConfig.init(context);
     return Scaffold(
-        backgroundColor: AppTheme.whiteColor,
-        body: SafeArea(
-            child: Expanded(
-              child: Stack(
-                      children: [
+      backgroundColor: AppTheme.whiteColor,
+      body: SafeArea(
+        child: Expanded(
+          child: Stack(
+            children: [
               pages[currentPage],
               Positioned(
                   left: 0,
                   right: 0,
                   bottom: 0,
                   child: buildBottomNav(currentPage)),
-                      ],
-                    ),
-            )));
+            ],
+          ),
+        ),
+      ),
+    );
   }
 
   Container buildBottomNav(int index) {
