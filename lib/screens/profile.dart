@@ -127,18 +127,36 @@ class UserProfileScreen extends StatelessWidget {
                       ),
                     ],
                   ),
-                  GestureDetector(
-                    onTap: () {
-                      Get.to(PlansScreen());
-                    },
-                    child:
-                    
-                    
-                     customNormalText(
-                      inputText: "Get a plan",
-                      fontSize: 20,
-                      weight: FontWeight.w800,
-                      colorName: AppTheme.primaryColor,
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: Padding(
+                      padding: const EdgeInsets.only(right: 20),
+                      child: SizedBox(
+                        height: 50,
+                        child: ElevatedButton(
+                          style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all<Color>(
+                              AppTheme.primaryColor,
+                            ),
+                            elevation: MaterialStateProperty.all<double>(0),
+                            shape: MaterialStateProperty.all<
+                                RoundedRectangleBorder>(
+                              RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(100),
+                              ),
+                            ),
+                          ),
+                          onPressed: () {
+                            Get.to(const PlansScreen());
+                          },
+                          child: customNormalText(
+                            inputText: "Get a plan",
+                            fontSize: 20,
+                            weight: FontWeight.w800,
+                            colorName: AppTheme.whiteColor,
+                          ),
+                        ),
+                      ),
                     ),
                   ),
                   const SizedBox(

@@ -1,3 +1,4 @@
+import 'package:ai_story_generator/core/extensions/extensions.dart';
 import 'package:ai_story_generator/main.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
@@ -18,8 +19,15 @@ class AiController extends GetxController {
 
     print("------ ai cookies ${localStorage.read("cookie")}");
 
-    if (response.runtimeType == String) {
-      return response;
+    if (response.startsWith('M')) {
+      // If the return String is a Message
+      print("This is a Success Text");
+      return response.substring(8).trim();
+    } else {
+      // If the return String is an Error
+      print("This is an Error Text");
+      errorSnackbar("Subscription Required");
+      return "false";
     }
   }
 }
