@@ -21,12 +21,10 @@ class AiController extends GetxController {
     OpenAIRepository openAI = OpenAIRepository();
     //
     List<String> history = [
-      "You are a story teller and only generate $prompt, if askes a question, check if it is relating to $prompt and only then you give a response but if it is not related, kindly tell the user to ask questions relating to only $prompt",
+      "You are a story teller and only generate $prompt, if asked a question, generate a $prompt of that question ",
     ];
     final response = await openAI.getChatCompletions(
-        history,
-        textInputController.text.trim(),
-        localStorage.read("cookie"));
+        history, textInputController.text.trim(), localStorage.read("cookie"));
 
     print("------ ai cookies ${response}");
 
