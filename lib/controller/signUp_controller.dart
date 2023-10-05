@@ -28,11 +28,15 @@ class SignUpController extends GetxController {
       errorSnackbar('Email or Password can not be empty');
     } else if (!emailController.text.emailValidation) {
       errorSnackbar('Please enter a valid email');
-    } else if (passwordController.text.passwordValidation) {
-      errorSnackbar("Please enter a strong password");
+    } else if (passwordController.text.length < 8) {
+      errorSnackbar("Please enter a strong password of more than 8 digits");
     } else if (passwordController.text.trim() !=
         confirmPasswordController.text.trim()) {
       errorSnackbar('password mismatch');
+    } else if (fullNameController.text.contains(" ")) {
+      fullNameController.text = fullNameController.text.replaceAll(" ", "_");
+      print("_____ ${fullNameController.text}");
+      signUp();
     } else {
       signUp();
     }
