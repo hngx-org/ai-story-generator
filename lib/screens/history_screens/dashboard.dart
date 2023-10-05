@@ -25,16 +25,18 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
     return Scaffold(
         backgroundColor: AppTheme.whiteColor,
         body: SafeArea(
-            child: Stack(
-          children: [
-            pages[currentPage],
-            Positioned(
-                left: 0,
-                right: 0,
-                bottom: 0,
-                child: buildBottomNav(currentPage)),
-          ],
-        )));
+            child: Expanded(
+              child: Stack(
+                      children: [
+              pages[currentPage],
+              Positioned(
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  child: buildBottomNav(currentPage)),
+                      ],
+                    ),
+            )));
   }
 
   Container buildBottomNav(int index) {
