@@ -7,7 +7,6 @@ import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:hng_authentication/authentication.dart';
 
 import '../core/utils/progress_dialog_utils.dart';
-import '../screens/payments/plan_categories.dart';
 
 class SignUpController extends GetxController {
   final TextEditingController fullNameController = TextEditingController();
@@ -62,7 +61,7 @@ class SignUpController extends GetxController {
       localStorage.write('id', result.id);
       localStorage.write("isLoggedIn", true);
 
-      Get.off(const PlansScreen());
+      Get.off(const SignInScreen());
       successSnackbar('SignUp successful');
     } else {
       print('errror:   eeeeeee');
