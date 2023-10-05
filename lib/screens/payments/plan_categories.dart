@@ -1,3 +1,4 @@
+import 'package:ai_story_generator/main.dart';
 import 'package:ai_story_generator/screens/history_screens/dashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -5,7 +6,6 @@ import '../../core/app_export.dart';
 
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:in_app_payment/in_app_payment.dart';
-
 
 class PlansScreen extends StatefulWidget {
   const PlansScreen({super.key});
@@ -27,6 +27,7 @@ class _PlansScreenState extends State<PlansScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final userId = localStorage.read('id');
     SizeConfig.init(context);
 
     return Scaffold(
@@ -143,12 +144,14 @@ class _PlansScreenState extends State<PlansScreen> {
               ),
               SizedBox(height: getProportionateScreenHeight(30)),
               SizedBox(
-                width: getProportionateScreenWidth(342),
-                height: getProportionateScreenHeight(60),
-                child:pay.googlePay(amountToPay: selectedPlan == "Monthly Plan"
-                            ? "\$4.99"
-                            : "\$49.99",)
-              ),
+                  width: getProportionateScreenWidth(342),
+                  height: getProportionateScreenHeight(60),
+                  child: pay.googlePay(
+                    context,
+                    userID: userId,
+                    amountToPay:
+                        selectedPlan == "Monthly Plan" ? "4.99" : "49.99",
+                  )),
             ],
           ),
         ),
