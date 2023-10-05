@@ -57,8 +57,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                   AuthTextField(
                     textFieldController: _signUpController.fullNameController,
-                    labelText: "Full name",
-                    hintText: "Input your full name",
+                    labelText: "Username",
+                    hintText: "Input your username",
                   ),
                   const SizedBox(
                     height: 20,
