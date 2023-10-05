@@ -1,5 +1,6 @@
 import 'package:ai_story_generator/controller/history_controller.dart';
 import 'package:ai_story_generator/core/app_export.dart';
+import 'package:ai_story_generator/main.dart';
 import 'package:ai_story_generator/screens/ai_screens/ai_chat_controller.dart';
 import 'package:ai_story_generator/screens/ai_screens/chat_textfield.dart';
 import 'package:ai_story_generator/screens/ai_screens/user_chat_container.dart';
@@ -59,6 +60,11 @@ class _IndividualAiChatScreenState extends State<IndividualAiChatScreen> {
         actions: [
           IconButton(
             onPressed: () {
+              // _historyController.addstoriesItem({
+              //   "Id": localStorage.read("id"),
+              //   "Title": "hey",
+              //   "Story": "story"
+              // });
               setState(() {
                 _aiController.aiInput.clear();
               });
@@ -112,7 +118,7 @@ class _IndividualAiChatScreenState extends State<IndividualAiChatScreen> {
                                 _aiController,
                                 index,
                               );
-                              _aiController.aiInput.clear();
+                              // _aiController.aiInput.clear();
                               _aiController.storyTitleController.clear();
                               _aiController.textInputController.clear();
                               Get.off(const DashBoardScreen());
@@ -128,7 +134,7 @@ class _IndividualAiChatScreenState extends State<IndividualAiChatScreen> {
             padding: const EdgeInsets.all(24.0),
             child: ChatTextField(
               textController: _aiController.textInputController,
-              hintText: "Enter Description",
+              hintText: "Enter ${widget.screenType} Description",
               aiResponse: aiResponse,
               onTap: () async {
                 if (_aiController.textInputController.text.isNotEmpty) {
@@ -142,11 +148,15 @@ class _IndividualAiChatScreenState extends State<IndividualAiChatScreen> {
                     _aiController.textInputController.clear();
                   });
 
-                  String response = await _aiController.generateStories();
-                  if(response == "false"){
+                  String response = await _aiController.generateStories(
+                    "Generate only ${widget.screenType} and when the conversation goes out of this context, kindly inform the user that you only respond to generating stories and nothing more",
+                    widget.screenType,
+                  );
+                  if (response == "false") {
                     setState(() {
-                      aiResponse =
-                        true;
+                      aiResponse = true;
+                      _aiController.aiInput.clear();
+                      
                     });
                   }
 
@@ -155,14 +165,13 @@ class _IndividualAiChatScreenState extends State<IndividualAiChatScreen> {
                   await Future.delayed(const Duration(
                       seconds: 5)); //Delays the following actions for 5 seconds
                   _moveToBottomView();
-                  if (response != "false"){
+                  if (response != "false") {
                     setState(() {
-                    aiResponse =
-                        true; // The loading Icons reverts back to the send Icon after ai response
-                    _aiController.aiInput.add({"ai": response});
-                  });
+                      aiResponse =
+                          true; // The loading Icons reverts back to the send Icon after ai response
+                      _aiController.aiInput.add({"ai": response});
+                    });
                   }
-                  
                 }
               },
             ),
@@ -177,18 +186,21 @@ class _IndividualAiChatScreenState extends State<IndividualAiChatScreen> {
     if (screenType == "Stories") {
       print("stories");
       historyController.addstoriesItem({
+        "Id": localStorage.read("id"),
         "Title": aiController.storyTitleController.text.trim(),
         "Story": aiController.aiInput[index]["ai"].toString()
       });
     } else if (screenType == "Poem") {
       print("Poems");
       historyController.addPoemsItem({
+        "Id": localStorage.read("id"),
         "Title": aiController.storyTitleController.text.trim(),
         "Story": aiController.aiInput[index]["ai"].toString()
       });
     } else if (screenType == "Creative Writing") {
       print("creative writing");
       historyController.addCreativeWritingsItem({
+        "Id": localStorage.read("id"),
         "Title": aiController.storyTitleController.text.trim(),
         "Story": aiController.aiInput[index]["ai"].toString()
       });

@@ -75,10 +75,10 @@ class _WithAllCategoryScreenState extends State<WithAllCategoryScreen> {
                   GestureDetector(
                     onTap: () {
                       Get.to(
-                          const IndividualAiChatScreen(screenType: "Stories"));
+                          const IndividualAiChatScreen(screenType: "Fiction"));
                     },
                     child: buildContainer(
-                        title: 'Stories', image: ImageConstant.storyImage),
+                        title: 'Fiction', image: ImageConstant.storyImage),
                   ),
                 ],
               ),

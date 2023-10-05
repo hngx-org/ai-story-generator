@@ -1,4 +1,5 @@
 import 'package:ai_story_generator/screens/history_screens/creative_writing_list.dart';
+import 'package:ai_story_generator/screens/history_screens/fiction_list.dart';
 import 'package:ai_story_generator/screens/history_screens/poem_list.dart';
 import 'package:ai_story_generator/screens/history_screens/story_list.dart';
 import 'package:flutter/material.dart';
@@ -15,12 +16,18 @@ class YourStoryScreen extends StatefulWidget {
 class _YourStoryScreenState extends State<YourStoryScreen> {
   int selectedIndex = 0;
 
-  List<String> title = ['Your Stories', 'Your Creative Writings', 'Your Poems'];
+  List<String> title = [
+    'Your Stories',
+    'Your Creative Writings',
+    'Your Poems',
+    "Your Fictions"
+  ];
 
   List<Widget> homePages = const [
     StoryList(),
     CreativeWritingList(),
     PoemList(),
+    FictionList()
   ];
 
   @override
@@ -61,7 +68,7 @@ class _YourStoryScreenState extends State<YourStoryScreen> {
                         child: AnimatedContainer(
                           duration: Duration(microseconds: 300),
                           margin: EdgeInsets.symmetric(
-                              horizontal: getProportionateScreenWidth(8)),
+                              horizontal: getProportionateScreenWidth(5)),
                           padding: EdgeInsets.symmetric(
                               horizontal: index == 1
                                   ? getProportionateScreenWidth(10)
@@ -122,5 +129,8 @@ List<TopTabModel> tabs = [
   ),
   TopTabModel(
     title: 'Poems',
+  ),
+  TopTabModel(
+    title: 'Fictions',
   ),
 ];
