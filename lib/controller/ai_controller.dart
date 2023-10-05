@@ -14,14 +14,17 @@ class AiController extends GetxController {
   //     "Generate only stories and when the conversation goes out of this context, kindly inform the user that you only respond to generating stories and nothing more";
 
   generateStories(String prompt, String sPrompt) async {
+    print("got here");
     aiResponse = false;
     OpenAIRepository openAI = OpenAIRepository();
     //
     List<String> history = [prompt, "Generate a $sPrompt"];
-    final response = await openAI.getChatCompletions(history,
-        "$prompt now generate ${textInputController.text.trim()}", localStorage.read("cookie"));
+    final response = await openAI.getChatCompletions(
+        history,
+        "$prompt now generate ${textInputController.text.trim()}",
+        localStorage.read("cookie"));
 
-    print("------ ai cookies ${localStorage.read("cookie")}");
+    print("------ ai cookies ${response}");
 
     if (response.startsWith('M')) {
       // If the return String is a Message
@@ -30,7 +33,7 @@ class AiController extends GetxController {
     } else {
       // If the return String is an Error
       print("This is an Error Text");
-      errorSnackbar("Subscription Required");
+      errorSnackbar(response);
       return "false";
     }
   }

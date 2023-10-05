@@ -60,14 +60,14 @@ class _IndividualAiChatScreenState extends State<IndividualAiChatScreen> {
         actions: [
           IconButton(
             onPressed: () {
-              _historyController.addstoriesItem({
-                "Id": localStorage.read("id"),
-                "Title": "hey",
-                "Story": "story"
-              });
-              // setState(() {
-              //   _aiController.aiInput.clear();
+              // _historyController.addstoriesItem({
+              //   "Id": localStorage.read("id"),
+              //   "Title": "hey",
+              //   "Story": "story"
               // });
+              setState(() {
+                _aiController.aiInput.clear();
+              });
             },
             icon: Icon(
               Icons.delete_outline_rounded,
@@ -118,7 +118,7 @@ class _IndividualAiChatScreenState extends State<IndividualAiChatScreen> {
                                 _aiController,
                                 index,
                               );
-                              _aiController.aiInput.clear();
+                              // _aiController.aiInput.clear();
                               _aiController.storyTitleController.clear();
                               _aiController.textInputController.clear();
                               Get.off(const DashBoardScreen());
@@ -149,11 +149,14 @@ class _IndividualAiChatScreenState extends State<IndividualAiChatScreen> {
                   });
 
                   String response = await _aiController.generateStories(
-                      "Generate only ${widget.screenType} and when the conversation goes out of this context, kindly inform the user that you only respond to generating stories and nothing more",
-                      "${widget.screenType} about the River");
+                    "Generate only ${widget.screenType} and when the conversation goes out of this context, kindly inform the user that you only respond to generating stories and nothing more",
+                    widget.screenType,
+                  );
                   if (response == "false") {
                     setState(() {
                       aiResponse = true;
+                      _aiController.aiInput.clear();
+                      
                     });
                   }
 

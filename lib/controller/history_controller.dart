@@ -5,9 +5,11 @@ class HistoryController extends GetxController {
   var storiesList = <dynamic>[].obs;
   var creativeWritingsList = <dynamic>[].obs;
   var poemsList = <dynamic>[].obs;
+  var fictionsList = <dynamic>[].obs;
   List stories = [];
   List creativeWritings = [];
   List poems = [];
+  List fictions = [];
 
   @override
   void onInit() {
@@ -64,6 +66,22 @@ class HistoryController extends GetxController {
       }
       poemsList.value = poems;
     }
+
+    fictionsList.value = localStorage.read('fictionsList') ?? [];
+    // Condition to check if the local data is off the same id of the current signed in user for fiction
+    if (fictionsList.isNotEmpty) {
+      print("got here");
+      for (var e in fictionsList) {
+        print(e);
+        if (e["Id"] == localStorage.read("id")) {
+          fictions.add(e);
+          print("got here $fictions");
+        } else {
+          fictionsList.value = [];
+        }
+      }
+      fictionsList.value = poems;
+    }
     print("----------------------- $storiesList");
   }
 
@@ -82,24 +100,36 @@ class HistoryController extends GetxController {
   void addCreativeWritingsItem(Map<String, String> newItem) {
     creativeWritingsList.add(newItem);
     // Save the updated list to local storage
-    localStorage.write('creativeWritingsList', storiesList);
+    localStorage.write('creativeWritingsList', creativeWritingsList);
   }
 
   void removeCreativeWritingsItem(int index) {
     creativeWritingsList.removeAt(index);
     // Save the updated list to local storage
-    localStorage.write('creativeWritingsList', storiesList);
+    localStorage.write('creativeWritingsList', creativeWritingsList);
   }
 
   void addPoemsItem(Map<String, String> newItem) {
     poemsList.add(newItem);
     // Save the updated list to local storage
-    localStorage.write('poemsList', storiesList);
+    localStorage.write('poemsList', poemsList);
   }
 
   void removePoemsItem(int index) {
     poemsList.removeAt(index);
     // Save the updated list to local storage
-    localStorage.write('poemsList', storiesList);
+    localStorage.write('poemsList', poemsList);
+  }
+
+    void addFictionsItem(Map<String, String> newItem) {
+    fictionsList.add(newItem);
+    // Save the updated list to local storage
+    localStorage.write('fictionsList', fictionsList);
+  }
+
+  void removeFictionsItem(int index) {
+    fictionsList.removeAt(index);
+    // Save the updated list to local storage
+    localStorage.write('fictionsList', fictionsList);
   }
 }
