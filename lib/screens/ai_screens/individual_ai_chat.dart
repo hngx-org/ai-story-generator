@@ -112,11 +112,10 @@ class _IndividualAiChatScreenState extends State<IndividualAiChatScreen> {
                                 _aiController,
                                 index,
                               );
-                              print(
-                                  "object  ${_historyController.storiesList[0]}");
-                              Get.off(DashBoardScreen());
+                              _aiController.aiInput.clear();
                               _aiController.storyTitleController.clear();
                               _aiController.textInputController.clear();
+                              Get.off(const DashBoardScreen());
                             },
                             textController: _aiController.storyTitleController,
                           ),
@@ -144,17 +143,26 @@ class _IndividualAiChatScreenState extends State<IndividualAiChatScreen> {
                   });
 
                   String response = await _aiController.generateStories();
+                  if(response == "false"){
+                    setState(() {
+                      aiResponse =
+                        true;
+                    });
+                  }
+
                   print("3333 ai res $response");
                   _moveToBottomView();
-                  await Future.delayed(Duration(
+                  await Future.delayed(const Duration(
                       seconds: 5)); //Delays the following actions for 5 seconds
                   _moveToBottomView();
-
-                  setState(() {
+                  if (response != "false"){
+                    setState(() {
                     aiResponse =
                         true; // The loading Icons reverts back to the send Icon after ai response
                     _aiController.aiInput.add({"ai": response});
                   });
+                  }
+                  
                 }
               },
             ),
