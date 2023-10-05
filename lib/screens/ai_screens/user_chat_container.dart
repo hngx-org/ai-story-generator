@@ -15,7 +15,7 @@ class UserChatContainer extends StatelessWidget {
           padding: const EdgeInsets.only(left: 10, top: 10),
           child: Image.asset(
             ImageConstant.profileAvatar,
-            scale: 4,
+            scale: 5,
           ),
         ),
         const SizedBox(

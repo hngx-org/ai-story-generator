@@ -13,15 +13,19 @@ class AiController extends GetxController {
   // String prompt =
   //     "Generate only stories and when the conversation goes out of this context, kindly inform the user that you only respond to generating stories and nothing more";
 
-  generateStories(String prompt,) async {
+  generateStories(
+    String prompt,
+  ) async {
     print("got here");
     aiResponse = false;
     OpenAIRepository openAI = OpenAIRepository();
     //
-    List<String> history = [prompt];
+    List<String> history = [
+      "You are a story teller and only generate $prompt, if askes a question, check if it is relating to $prompt and only then you give a response but if it is not related, kindly tell the user to ask questions relating to only $prompt",
+    ];
     final response = await openAI.getChatCompletions(
         history,
-        "now generate ${textInputController.text.trim()}",
+        textInputController.text.trim(),
         localStorage.read("cookie"));
 
     print("------ ai cookies ${response}");

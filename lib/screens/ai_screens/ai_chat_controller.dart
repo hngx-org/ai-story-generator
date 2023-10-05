@@ -20,9 +20,12 @@ class AiChatContainer extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Image.asset(
-          ImageConstant.chatBotImage,
-          scale: 4,
+        Padding(
+          padding: const EdgeInsets.only(top: 3),
+          child: Image.asset(
+            ImageConstant.chatBotImage,
+            scale: 5,
+          ),
         ),
         Container(
           width: double.infinity,

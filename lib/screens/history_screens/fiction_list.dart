@@ -67,7 +67,7 @@ class _FictionListState extends State<FictionList> {
                                 fontSize: 22,
                                 weight: FontWeight.w500,
                                 colorName: AppTheme.blackColor),
-                            Image.asset(ImageConstant.poemImage)
+                            Image.asset(ImageConstant.storyImage)
                           ],
                         ),
                       ),

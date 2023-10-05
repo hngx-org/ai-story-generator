@@ -34,49 +34,51 @@ class _StoryListState extends State<StoryList> {
               scale: 5,
             ),
           )
-        : CarouselSlider(
-            options: CarouselOptions(
-              autoPlay: false,
-              enlargeCenterPage: true,
-              aspectRatio: 1,
-              enableInfiniteScroll: false,
-              viewportFraction: 0.7,
-            ),
-            items: _historyController.storiesList
-                .map((mapString) => GestureDetector(
-                      onTap: () {
-                        Get.to(IndividualStoryScreen(
-                          title: mapString["Title"].toString(),
-                          content: mapString["Story"].toString(),
-                        ));
-                      },
-                      child: Container(
-                        padding: const EdgeInsets.fromLTRB(20, 30, 20, 20),
-                        width: 250,
-                        margin: EdgeInsets.symmetric(
-                          horizontal: getProportionateScreenWidth(0),
-                        ),
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            color: AppTheme.blackColor,
+        : Flexible(
+          child: CarouselSlider(
+              options: CarouselOptions(
+                autoPlay: false,
+                enlargeCenterPage: true,
+                aspectRatio: 1,
+                enableInfiniteScroll: false,
+                viewportFraction: 0.7,
+              ),
+              items: _historyController.storiesList
+                  .map((mapString) => GestureDetector(
+                        onTap: () {
+                          Get.to(IndividualStoryScreen(
+                            title: mapString["Title"].toString(),
+                            content: mapString["Story"].toString(),
+                          ));
+                        },
+                        child: Container(
+                          padding: const EdgeInsets.fromLTRB(20, 30, 20, 20),
+                          width: 250,
+                          margin: EdgeInsets.symmetric(
+                            horizontal: getProportionateScreenWidth(0),
                           ),
-                          color: AppTheme.whiteColor,
-                          borderRadius: BorderRadius.circular(20),
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: AppTheme.blackColor,
+                            ),
+                            color: AppTheme.whiteColor,
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              customCentreText(
+                                  inputText: mapString["Title"].toString(),
+                                  fontSize: 22,
+                                  weight: FontWeight.w500,
+                                  colorName: AppTheme.blackColor),
+                              Image.asset(ImageConstant.storyImage)
+                            ],
+                          ),
                         ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            customCentreText(
-                                inputText: mapString["Title"].toString(),
-                                fontSize: 22,
-                                weight: FontWeight.w500,
-                                colorName: AppTheme.blackColor),
-                            Image.asset(ImageConstant.storyImage)
-                          ],
-                        ),
-                      ),
-                    ))
-                .toList());
+                      ))
+                  .toList()),
+        );
   }
 }
 
