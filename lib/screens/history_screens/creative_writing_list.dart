@@ -33,6 +33,7 @@ class _CreativeWritingListState extends State<CreativeWritingList> {
               enlargeCenterPage: true,
               aspectRatio: 1,
               enableInfiniteScroll: false,
+              viewportFraction: 0.7,
             ),
             items: _historyController.creativeWritingsList
                 .map((mapString) => GestureDetector(

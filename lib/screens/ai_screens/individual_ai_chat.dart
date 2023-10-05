@@ -150,13 +150,12 @@ class _IndividualAiChatScreenState extends State<IndividualAiChatScreen> {
 
                   String response = await _aiController.generateStories(
                     "Generate only ${widget.screenType} and when the conversation goes out of this context, kindly inform the user that you only respond to generating stories and nothing more",
-                    widget.screenType,
+                    // widget.screenType,
                   );
                   if (response == "false") {
                     setState(() {
                       aiResponse = true;
                       _aiController.aiInput.clear();
-                      
                     });
                   }
 
@@ -164,7 +163,8 @@ class _IndividualAiChatScreenState extends State<IndividualAiChatScreen> {
                   _moveToBottomView();
                   await Future.delayed(const Duration(
                       seconds: 5)); //Delays the following actions for 5 seconds
-                  _moveToBottomView();
+                  // _moveToBottomView();
+                  
                   if (response != "false") {
                     setState(() {
                       aiResponse =

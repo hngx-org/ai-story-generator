@@ -39,6 +39,7 @@ class _FictionListState extends State<FictionList> {
               enlargeCenterPage: true,
               aspectRatio: 1,
               enableInfiniteScroll: false,
+              viewportFraction: 0.7,
             ),
             items: _historyController.fictionsList
                 .map((mapString) => GestureDetector(
