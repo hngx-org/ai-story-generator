@@ -39,6 +39,7 @@ class _FictionListState extends State<FictionList> {
               enlargeCenterPage: true,
               aspectRatio: 1,
               enableInfiniteScroll: false,
+              viewportFraction: 0.7,
             ),
             items: _historyController.fictionsList
                 .map((mapString) => GestureDetector(
@@ -66,7 +67,7 @@ class _FictionListState extends State<FictionList> {
                                 fontSize: 22,
                                 weight: FontWeight.w500,
                                 colorName: AppTheme.blackColor),
-                            Image.asset(ImageConstant.poemImage)
+                            Image.asset(ImageConstant.storyImage)
                           ],
                         ),
                       ),

@@ -39,6 +39,7 @@ class _PoemListState extends State<PoemList> {
               enlargeCenterPage: true,
               aspectRatio: 1,
               enableInfiniteScroll: false,
+              viewportFraction: 0.7,
             ),
             items: _historyController.poemsList
                 .map((mapString) => GestureDetector(
