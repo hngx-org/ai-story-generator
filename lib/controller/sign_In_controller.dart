@@ -34,20 +34,19 @@ class SignInController extends GetxController {
     print("--------- $result");
     ProgressDialogUtils.hideProgressDialog();
     if (result != null) {
+      print("--------- ${result.name}");
+      print("--------- ${result.email}");
+      print("--------- ${result.cookie}");
+      print("--------- ${result.id}");
+      // print("--------- ${result.headers['cookies']}");
 
-        print("--------- ${result.name}");
-        print("--------- ${result.email}");
-        print("--------- ${result.cookie}");
-        print("--------- ${result.id}");
-        // print("--------- ${result.headers['cookies']}");
-
-        localStorage.write('fullName', result.name);
-        localStorage.write('email', result.email);
-        localStorage.write('cookie', result.cookie);
-        localStorage.write('id', result.id);
-        localStorage.write("isLoggedIn", true);
-        Get.off(const PlansScreen());
-        successSnackbar('SignUp successful');
+      localStorage.write('fullName', result.name);
+      localStorage.write('email', result.email);
+      localStorage.write('cookie', result.cookie);
+      localStorage.write('id', result.id);
+      localStorage.write("isLoggedIn", true);
+      Get.off(const PlansScreen());
+      successSnackbar('SignUp successful');
     } else {
       print('errror:   eeeeeee');
       ProgressDialogUtils.hideProgressDialog();

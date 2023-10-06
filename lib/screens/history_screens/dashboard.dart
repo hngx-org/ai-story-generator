@@ -29,11 +29,10 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
           children: [
             pages[currentPage],
             Positioned(
-              left: 0,
-              right: 0,
-              bottom: 0,
-              child: buildBottomNav(currentPage),
-            ),
+                left: 0,
+                right: 0,
+                bottom: 0,
+                child: buildBottomNav(currentPage)),
           ],
         ),
       ),
@@ -96,18 +95,30 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                 ),
                 Positioned(
                   bottom: getProportionateScreenHeight(40),
-                  child: Container(
+                  child: SizedBox(
                     height: getProportionateScreenHeight(75),
                     width: getProportionateScreenWidth(75),
-                    decoration: BoxDecoration(
-                      color: AppTheme.redColor,
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: Icon(
-                      Icons.add_rounded,
-                      color: AppTheme.whiteColor,
-                      size: getProportionateScreenWidth(30),
-                    ),
+                    child: ElevatedButton(
+                        onPressed: () {
+                          setState(() {
+                            currentPage = 1;
+                          });
+                        },
+                        style: ElevatedButton.styleFrom(
+                            elevation: 0,
+                            backgroundColor: AppTheme.redColor,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20),
+                                side: BorderSide(color: AppTheme.redColor))),
+                        child: Padding(
+                          padding: EdgeInsets.only(
+                              right: getProportionateScreenWidth(60)),
+                          child: Icon(
+                            Icons.add_rounded,
+                            color: AppTheme.whiteColor,
+                            size: getProportionateScreenWidth(30),
+                          ),
+                        )),
                   ),
                 )
               ],
