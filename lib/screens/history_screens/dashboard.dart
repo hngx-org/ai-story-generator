@@ -25,17 +25,16 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
     return Scaffold(
       backgroundColor: AppTheme.whiteColor,
       body: SafeArea(
-        child: Expanded(
-          child: Stack(
-            children: [
-              pages[currentPage],
-              Positioned(
-                  left: 0,
-                  right: 0,
-                  bottom: 0,
-                  child: buildBottomNav(currentPage)),
-            ],
-          ),
+        child: Stack(
+          children: [
+            pages[currentPage],
+            Positioned(
+              left: 0,
+              right: 0,
+              bottom: 0,
+              child: buildBottomNav(currentPage),
+            ),
+          ],
         ),
       ),
     );
@@ -101,8 +100,9 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                     height: getProportionateScreenHeight(75),
                     width: getProportionateScreenWidth(75),
                     decoration: BoxDecoration(
-                        color: AppTheme.redColor,
-                        borderRadius: BorderRadius.circular(20)),
+                      color: AppTheme.redColor,
+                      borderRadius: BorderRadius.circular(20),
+                    ),
                     child: Icon(
                       Icons.add_rounded,
                       color: AppTheme.whiteColor,

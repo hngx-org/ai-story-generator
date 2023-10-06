@@ -1,3 +1,4 @@
+import 'package:ai_story_generator/screens/payments/plan_categories.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
@@ -6,7 +7,6 @@ import 'package:hng_authentication/authentication.dart';
 import '../core/extensions/extensions.dart';
 import '../core/utils/progress_dialog_utils.dart';
 import '../main.dart';
-import '../screens/history_screens/dashboard.dart';
 
 class SignInController extends GetxController {
   final TextEditingController emailController = TextEditingController();
@@ -46,7 +46,7 @@ class SignInController extends GetxController {
         localStorage.write('cookie', result.cookie);
         localStorage.write('id', result.id);
         localStorage.write("isLoggedIn", true);
-        Get.off(const DashBoardScreen());
+        Get.off(const PlansScreen());
         successSnackbar('SignUp successful');
     } else {
       print('errror:   eeeeeee');
